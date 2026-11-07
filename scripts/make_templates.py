@@ -192,41 +192,6 @@ T["enroll-form.html"] = page("수강 등록 신청서", ENROLL_CSS + """
 </table>
 """)
 
-# 5. 교습비 반환 신청서
-T["refund-request.html"] = page("교습비 반환 신청서", """
-<h1>교습비 반환 신청서</h1>
-<p class="sub">______________ 학원</p>
-<table>
-<tr><th style="width:20%">학생 이름</th><td></td><th style="width:20%">수강 과목·반</th><td></td></tr>
-<tr><th>보호자 이름</th><td></td><th>연락처</th><td></td></tr>
-<tr><th>납부한 교습비등</th><td>__________원</td><th>납부일</th><td></td></tr>
-<tr><th>교습기간</th><td colspan="3">20___. ___. ___ ~ 20___. ___. ___ (총 교습시간 ______분 / 회차 ____회)</td></tr>
-<tr><th>수강 포기일<br>(반환사유 발생일)</th><td></td><th>경과 교습시간</th><td>______분 / 회차 ____회</td></tr>
-<tr><th>반환 사유</th><td colspan="3">□ 본인 의사로 수강 포기 □ 학원 사정으로 교습 불가 □ 격리(감염병 등) □ 기타: ________</td></tr>
-<tr><th>반환 계좌</th><td colspan="3">은행 ________ 계좌번호 __________________ 예금주 ________</td></tr>
-</table>
-<h2>학원 확인란</h2>
-<table>
-<tr><th style="width:20%">적용 기준</th><td colspan="3">□ 시작 전 전액 □ 1/3 경과 전 2/3 □ 1/2 경과 전 1/2 □ 1/2 경과 후 없음 □ 일할 계산</td></tr>
-<tr><th>반환 금액</th><td>__________원</td><th style="width:20%">반환 예정일</th><td>(발생일부터 5일 이내)</td></tr>
-</table>
-<div class="sign"><div>20____년 ____월 ____일</div><div>신청인: ____________ (서명) &nbsp; 확인자(학원): ____________ (서명)</div></div>
-""", "학원법 제18조, 시행령 제18조 및 [별표 4]")
-
-# 6. 상담 기록 카드
-T["consult-card.html"] = page("상담 기록 카드", """
-<h1>상담 기록 카드</h1>
-<p class="sub">신규 상담과 재원생 정기 상담을 한 장에 기록합니다.</p>
-<table>
-<tr><th style="width:18%">학생 이름</th><td></td><th style="width:18%">학교·학년</th><td></td></tr>
-<tr><th>보호자·연락처</th><td></td><th>알게 된 경로</th><td>□ 지인 □ 블로그 □ 네이버 지도 □ 전단 □ 기타</td></tr>
-<tr><th>현재 성적</th><td></td><th>목표</th><td></td></tr>
-<tr><th>다니는 다른 학원</th><td colspan="3"></td></tr>
-</table>
-""" + blanks(["상담일", "상담자", "상담 방법", "상담 내용", "다음 할 일 / 약속"], 8) + """
-<table><tr><th style="width:18%">등록 결과</th><td>□ 등록 □ 체험수업 □ 보류 □ 미등록 (사유: ____________)</td></tr></table>
-""")
-
 # 7. 강사 채용 체크리스트
 T["hiring-checklist.html"] = page("강사 채용 체크리스트", """
 <h1>강사 채용 체크리스트</h1>
@@ -287,18 +252,5 @@ T["yearly-calendar.html"] = page("원장 연간 행정·세무 일정", """
 for name, html in T.items():
     with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
         f.write(html)
-
-# CSV (엑셀에서 한글이 깨지지 않도록 BOM 포함)
-def csv(name, header, rows):
-    with open(os.path.join(OUT, name), "w", encoding="utf-8-sig", newline="") as f:
-        f.write(",".join(header) + "\r\n")
-        for r in rows:
-            f.write(",".join(r) + "\r\n")
-
-days = [str(d) for d in range(1, 32)]
-csv("attendance.csv", ["반", "학생 이름", "보호자 연락처"] + days + ["출석", "결석", "지각"],
-    [["예시반", "홍길동(예시)", "010-0000-0000"] + [""] * 31 + ["", "", ""]] + [[""] * 37 for _ in range(30)])
-csv("payments.csv", ["청구월", "학생 이름", "반", "교습비", "기타경비", "청구 합계", "납부일", "납부 방법", "납부액", "미납액", "현금영수증 발급", "메모"],
-    [["2026-11", "홍길동(예시)", "예시반", "250000", "0", "250000", "", "", "", "", "", ""]] + [[""] * 12 for _ in range(40)])
 
 print("written:", sorted(os.listdir(OUT)))
