@@ -151,14 +151,7 @@ T["enroll-form.html"] = page("수강 등록 신청서", ENROLL_CSS + """
 <div class="photo">사진<br>(3×4)</div>
 </div>
 
-<div class="sec"><h2>학교 시험 점수</h2><span>최근 2~3회 시험을 적습니다. 등급제 과목은 등급이나 성취도(A~E)를 적습니다.</span></div>
-<div class="wrapx"><table>
-<tr><th style="width:20%">시험 (학년·학기)</th><th>국어</th><th>영어</th><th>수학</th><th>사회</th><th>과학</th><th>기타 / 평균</th></tr>
-<tr><td>____학년 __학기 중간</td>""" + '<td class="blank"></td>' * 6 + """</tr>
-<tr><td>____학년 __학기 기말</td>""" + '<td class="blank"></td>' * 6 + """</tr>
-<tr><td>____학년 __학기 ____</td>""" + '<td class="blank"></td>' * 6 + """</tr>
-<tr><td>모의고사 / 학력평가</td>""" + '<td class="blank"></td>' * 6 + """</tr>
-</table></div>
+<table style="margin-top:10px"><tr><th style="width:17%">학교 시험 점수</th><td style="height:44px"></td></tr></table>
 
 <div class="sec"><h2>입학 테스트 (레벨 테스트)</h2><span>테스트 일자: 20___. ___. ___ · 감독 ________</span></div>
 <div class="wrapx"><table>
