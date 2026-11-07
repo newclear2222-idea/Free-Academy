@@ -141,7 +141,7 @@ T["enroll-form.html"] = page("수강 등록 신청서", ENROLL_CSS + """
 
 <table>
 <tr><th style="width:17%">학생 이름</th><td></td><th style="width:17%">성별</th><td>□ 남 □ 여</td></tr>
-<tr><th>생년월일</th><td></td><th>학생 연락처</th><td></td></tr>
+<tr><th>학생 연락처</th><td colspan="3"></td></tr>
 <tr><th>학교·학년</th><td colspan="3">________ 학교 ____학년</td></tr>
 <tr><th>주소</th><td colspan="3"></td></tr>
 <tr><th>보호자 연락처</th><td colspan="3"></td></tr>
