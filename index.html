@@ -159,6 +159,25 @@ footer { margin-top: 40px; font-size: 13px; color: var(--muted); }
   .card, .form { transition: border-color .15s; }
   .card:hover { border-color: var(--pen); }
 }
+/* 사설 모의고사 무료배포 */
+.mock { margin-bottom: 36px; }
+.mchips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.mchips button { font: inherit; font-size: 13px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--sheet); color: var(--ink); cursor: pointer; }
+.mchips button[aria-pressed="true"] { background: var(--pen); border-color: var(--pen); color: var(--sheet); }
+.mlist { list-style: none; margin: 0; padding: 0; background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; }
+.mlist li { display: grid; grid-template-columns: 88px 52px minmax(0, 1fr) auto; gap: 10px; align-items: baseline; padding: 9px 14px; border-top: 1px solid var(--line); font-size: 14px; }
+.mlist li:first-child { border-top: none; }
+.mlist time, .mlist .by { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.mlist .sj { font-size: 11px; text-align: center; padding: 2px 0; border-radius: 6px; background: var(--pen-soft); color: var(--pen); }
+.mlist a { color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+.mlist a:hover { color: var(--pen); text-decoration: underline; }
+.mmore { font: inherit; font-size: 13px; margin-top: 8px; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--sheet); color: var(--ink); cursor: pointer; }
+.mnote { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+@media (max-width: 640px) {
+  .mlist li { grid-template-columns: 52px minmax(0, 1fr); row-gap: 2px; }
+  .mlist time { grid-column: 1 / -1; order: -1; }
+  .mlist .by { grid-column: 2; }
+}
 </style>
 </head>
 <body>
@@ -200,6 +219,15 @@ footer { margin-top: 40px; font-size: 13px; color: var(--muted); }
       <span class="why" style="font-size:12px;color:var(--muted)">학원법 시행령 [별표 4] 기준. 학습자 본인 의사로 그만둔 경우이며, 5일 이내 반환해야 합니다.</span>
     </form>
   </div>
+
+  <section class="mock" aria-labelledby="mock-title">
+    <h2 class="sec" id="mock-title">사설 모의고사 무료배포 새 글</h2>
+    <p class="secp">오르비에 올라오는 사설 모의고사·N제 무료배포 글을 매일 자동으로 모읍니다. 제목을 누르면 제작자 글로 가서 문제지와 해설을 받습니다. <span id="mock-upd"></span></p>
+    <div class="mchips" id="mock-chips" role="group" aria-label="과목"></div>
+    <ul class="mlist" id="mock-list"></ul>
+    <button type="button" class="mmore" id="mock-more" hidden>더 보기</button>
+    <p class="mnote">파일은 이 사이트에 올리지 않습니다. 제작자 대부분이 "학원·학교 수업 사용 가능, 재배포 금지"로 배포하기 때문이에요. 학원 인쇄가 되는지는 글마다 적힌 조건을 확인하세요.</p>
+  </section>
 
   <dialog class="viewer" id="viewer" aria-labelledby="v-title">
     <div class="vbar">
@@ -467,6 +495,24 @@ function calc() {
 $("#calc").addEventListener("input", calc);
 $("#calc").addEventListener("submit", e => e.preventDefault());
 calc();
+// 사설 모의고사 피드 (scripts/fetch_mock.py 가 매일 갱신)
+const MOCK = /*MOCK*/{"updated":"2026-11-07","items":[{"id":"00078282560","title":"수학 풀모의고사 무료배포","author":"띵최미카를로타","date":"2026-04-28","subject":"수학"},{"id":"00075402315","title":"[무료배포] 우일신 파이널 모의고사 시즌2 3회","author":"Thinkers","date":"2025-11-07","subject":"기타"},{"id":"00075193511","title":"[무료배포] 우일신 파이널 모의고사 시즌2 2회","author":"Thinkers","date":"2025-10-23","subject":"기타"},{"id":"00075025166","title":"2026학년도 대학수학능력시험 대비 [결정] 모의고사 1회 무료배포","author":"다정[多征]","date":"2025-10-11","subject":"기타"},{"id":"00075011935","title":"[무료배포] 우일신 파이널 모의고사 시즌2 1회","author":"Thinkers","date":"2025-10-10","subject":"기타"},{"id":"00074481346","title":"[무료배포] 우일신 파이널 모의고사 시즌1 3회","author":"Thinkers","date":"2025-08-29","subject":"기타"},{"id":"00074415764","title":"[수학 모의고사 배포] 9월 모의고사 대비 문제지(공통)","author":"원 점","date":"2025-08-23","subject":"수학"},{"id":"00074404805","title":"[무료배포] 우일신 파이널 모의고사 시즌1 2회","author":"Thinkers","date":"2025-08-22","subject":"기타"},{"id":"00074312430","title":"[무료배포] 우일신 파이널 모의고사 시즌1 1회","author":"Thinkers","date":"2025-08-15","subject":"기타"},{"id":"00069482049","title":"[무료배포] 2025학년도 이게진대 모의평가 (수능 수학, 공통 + 미적분)","author":"TEAM 이게진대","date":"2024-10-14","subject":"수학"},{"id":"00069355251","title":"[무료 배포] 통합과학 중간고사 대비 모의고사 6~10회","author":"Project_SYNC","date":"2024-10-02","subject":"통합"},{"id":"00069297350","title":"[무료 배포] 통합과학 중간고사 대비 모의고사 3회","author":"Project_SYNC","date":"2024-09-27","subject":"통합"},{"id":"00069282617","title":"[무료 배포] 통합과학 중간고사 대비 모의고사 2회","author":"Project_SYNC","date":"2024-09-25","subject":"통합"},{"id":"00069275678","title":"[무료 배포] 통합과학 중간고사 대비 모의고사 1회","author":"Project_SYNC","date":"2024-09-24","subject":"통합"}]}/*/MOCK*/;
+const mock = { sj: "전체", n: 15 };
+function drawMock() {
+  const sjs = ["전체", ...new Set(MOCK.items.map(i => i.subject))];
+  $("#mock-chips").innerHTML = sjs.map(s => `<button type="button" aria-pressed="${s === mock.sj}">${esc(s)}</button>`).join("");
+  const list = MOCK.items.filter(i => mock.sj === "전체" || i.subject === mock.sj);
+  $("#mock-list").innerHTML = list.slice(0, mock.n).map(i =>
+    `<li><time datetime="${esc(i.date)}">${esc(i.date)}</time><span class="sj">${esc(i.subject)}</span><a href="https://orbi.kr/${esc(i.id)}" target="_blank" rel="noopener">${esc(i.title)}</a><span class="by">${esc(i.author)}</span></li>`).join("");
+  $("#mock-more").hidden = list.length <= mock.n;
+  $("#mock-upd").textContent = `마지막 갱신 ${MOCK.updated}.`;
+}
+$("#mock-chips").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  mock.sj = b.textContent; mock.n = 15; drawMock();
+});
+$("#mock-more").addEventListener("click", () => { mock.n += 30; drawMock(); });
+drawMock();
 </script>
 </body>
 </html>
