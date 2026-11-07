@@ -40,38 +40,89 @@ ul.check { padding-left:4px; }
 <span>칸을 눌러 바로 입력한 뒤 인쇄할 수 있습니다. 학원명 등은 직접 고쳐 쓰세요.</span></div>
 <div class="sheet" contenteditable="true" spellcheck="false">
 
-<h1>수강 등록 신청서</h1>
-<p class="sub">______________ 학원</p>
-<h2>학생 정보</h2>
+<style>
+.ehead { display:grid; grid-template-columns: 1fr 30mm; gap:10px; align-items:stretch; }
+.photo { border:1px dashed var(--line); display:grid; place-items:center; color:var(--muted); font-size:12px; min-height:38mm; text-align:center; }
+.two { display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
+.sec { display:flex; align-items:center; gap:8px; margin:16px 0 6px; }
+.sec h2 { margin:0; }
+.sec span { font-size:12px; color:var(--muted); }
+td.c, th.c { text-align:center; }
+.boxes { display:flex; flex-wrap:wrap; gap:4px 14px; }
+.office { margin-top:14px; border:1.5px solid var(--ink); }
+.office th { background:#dfe4ec; }
+@media (max-width:640px) { .ehead, .two { grid-template-columns: 1fr; } .photo { min-height:24mm; } }
+</style>
+
+<h1>원생 등록 카드</h1>
+<p class="sub">______________ 학원 · 등록번호 ________ · 담당 강사 ________</p>
+
+<div class="ehead">
 <table>
-<tr><th style="width:18%">학생 이름</th><td></td><th style="width:18%">학교·학년</th><td></td></tr>
+<tr><th style="width:17%">학생 이름</th><td></td><th style="width:17%">성별</th><td>□ 남 □ 여</td></tr>
 <tr><th>생년월일</th><td></td><th>학생 연락처</th><td></td></tr>
-<tr><th>보호자 이름</th><td></td><th>보호자 연락처</th><td></td></tr>
+<tr><th>학교</th><td>________ 학교</td><th>학년·반</th><td>____학년 ____반</td></tr>
 <tr><th>주소</th><td colspan="3"></td></tr>
+<tr><th>보호자</th><td>이름 ________ (관계: ____)</td><th>보호자 연락처</th><td></td></tr>
+<tr><th>비상 연락처</th><td></td><th>알게 된 경로</th><td>□ 지인 □ 블로그 □ 지도 □ 전단 □ 기타</td></tr>
 </table>
-<h2>수강 내용</h2>
+<div class="photo">사진<br>(3×4)</div>
+</div>
+
+<div class="sec"><h2>학교 시험 점수</h2><span>최근 2~3회 시험을 적습니다. 등급제 과목은 등급이나 성취도(A~E)를 적습니다.</span></div>
+<div class="wrapx"><table>
+<tr><th style="width:20%">시험 (학년·학기)</th><th>국어</th><th>영어</th><th>수학</th><th>사회</th><th>과학</th><th>기타 / 평균</th></tr>
+<tr><td>____학년 __학기 중간</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td>____학년 __학기 기말</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td>____학년 __학기 ____</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td>모의고사 / 학력평가</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+</table></div>
+
+<div class="sec"><h2>입학 테스트 (레벨 테스트)</h2><span>테스트 일자: 20___. ___. ___ · 감독 ________</span></div>
+<div class="wrapx"><table>
+<tr><th style="width:20%">과목</th><th>영역 / 단원</th><th class="c" style="width:13%">점수</th><th class="c" style="width:13%">만점</th><th class="c" style="width:14%">판정 레벨</th><th style="width:22%">강한 부분 / 약한 부분</th></tr>
+<tr><td class="blank"></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class="blank"></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class="blank"></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class="blank"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>종합 의견</th><td colspan="5" style="height:44px"></td></tr>
+<tr><th>배정 반</th><td colspan="2"></td><th>추천 교재</th><td colspan="2"></td></tr>
+</table></div>
+
+<div class="sec"><h2>특이사항</h2></div>
 <table>
-<tr><th style="width:18%">수강 과목·반</th><td></td><th style="width:18%">수업 요일·시간</th><td></td></tr>
+<tr><th style="width:20%">학습 성향</th><td><div class="boxes"><span>□ 꼼꼼함</span><span>□ 빠르지만 실수 많음</span><span>□ 질문을 잘 함</span><span>□ 집중 시간 짧음</span><span>□ 숙제 관리 필요</span></div></td></tr>
+<tr><th>목표</th><td>□ 내신 □ 수능·모의고사 □ 선행 □ 기초 보충 □ 특목·자사고 □ 기타 ______ &nbsp; 목표 점수·등급: ______</td></tr>
+<tr><th>이전 학원 / 과외</th><td>기관 ________ · 기간 ________ · 그만둔 이유 ________________</td></tr>
+<tr><th>건강·알레르기</th><td>□ 없음 □ 있음: ________________ (복용 약, 주의할 점)</td></tr>
+<tr><th>등하원</th><td>□ 혼자 □ 보호자 픽업 □ 학원 차량 (탑승 위치: ________) · 형제자매 재원: □ 없음 □ 있음 ______</td></tr>
+<tr><th>보호자 요청</th><td style="height:46px"></td></tr>
+<tr><th>상담자 메모</th><td style="height:46px"></td></tr>
+</table>
+
+<div class="sec"><h2>수강 내용</h2></div>
+<table>
+<tr><th style="width:17%">수강 과목·반</th><td></td><th style="width:17%">수업 요일·시간</th><td></td></tr>
 <tr><th>수강 시작일</th><td></td><th>교습기간</th><td>□ 1개월 □ ___개월</td></tr>
-<tr><th>교습비</th><td>월 __________원</td><th>기타경비</th><td>__________원 (항목: ________)</td></tr>
-<tr><th>납부 방법</th><td colspan="3">□ 카드 □ 계좌이체 □ 현금 (현금은 현금영수증 발급) &nbsp; 납부일: 매월 ____일</td></tr>
+<tr><th>교습비</th><td>월 __________원</td><th>기타경비</th><td>__________원 (항목: ______)</td></tr>
+<tr><th>납부 방법</th><td colspan="3">□ 카드 □ 계좌이체 □ 현금(현금영수증 발급) · 납부일: 매월 ____일</td></tr>
 </table>
-<h2>상담 메모 (현재 성적, 목표, 특이사항)</h2>
-<table><tr><td style="height:70px"></td></tr></table>
-<h2>교습비 반환 안내</h2>
-<p class="note">교습비는 「학원법 시행령」 [별표 4] 반환기준에 따라 반환합니다. 1개월 이내 교습: 시작 전 전액, 1/3 경과 전 2/3, 1/2 경과 전 1/2, 1/2 경과 후 반환 없음. 반환사유 발생일부터 5일 이내 반환합니다.</p>
-<h2>개인정보 수집·이용 동의</h2>
+<p class="note">교습비는 「학원법 시행령」 [별표 4]에 따라 반환합니다. 1개월 이내 교습: 시작 전 전액, 1/3 경과 전 2/3, 1/2 경과 전 1/2, 1/2 경과 후 반환 없음. 반환사유가 생긴 날부터 5일 이내 반환합니다.</p>
+
+<div class="sec"><h2>개인정보 수집·이용 동의</h2></div>
 <table>
-<tr><th style="width:22%">수집 항목</th><td>학생·보호자 이름, 연락처, 학교·학년, 생년월일, 주소</td></tr>
-<tr><th>이용 목적</th><td>수강 관리, 출결·학습 안내, 교습비 청구·영수증 발급, 상담</td></tr>
+<tr><th style="width:20%">수집 항목</th><td>학생·보호자 이름, 연락처, 학교·학년, 생년월일, 주소, 시험·테스트 점수, 건강 관련 특이사항</td></tr>
+<tr><th>이용 목적</th><td>수강 관리, 반 배정, 학습 상담·성적 관리, 출결 안내, 교습비 청구·영수증 발급, 안전 관리</td></tr>
 <tr><th>보유 기간</th><td>퇴원 후 1년 (관계 법령에 따라 보존이 필요한 경우 그 기간)</td></tr>
-<tr><th>동의 거부 권리</th><td>동의를 거부할 수 있으나, 거부 시 수강 등록이 어려울 수 있습니다.</td></tr>
+<tr><th>동의 거부 권리</th><td>동의를 거부할 수 있으나, 거부 시 수강 등록이 어려울 수 있습니다. 건강 정보는 선택 항목입니다.</td></tr>
 </table>
-<p>위 내용을 확인하였으며 개인정보 수집·이용에 □ 동의합니다 □ 동의하지 않습니다.</p>
-<p>(선택) 학원 소식·이벤트 안내 문자 수신에 □ 동의합니다 □ 동의하지 않습니다.</p>
+<p>개인정보 수집·이용에 □ 동의 □ 미동의 &nbsp;&nbsp; (선택) 건강 정보 수집에 □ 동의 □ 미동의 &nbsp;&nbsp; (선택) 학원 소식 문자 수신에 □ 동의 □ 미동의</p>
 <div class="sign"><div>20____년 ____월 ____일</div><div>학생: ____________ (서명) &nbsp; 보호자: ____________ (서명)</div></div>
 
-<p class="note">근거: 학원법 시행령 [별표 4], 개인정보 보호법 제15조·제22조 (만 14세 미만은 법정대리인 동의 필요)</p>
+<table class="office">
+<tr><th colspan="6">학원 기록란</th></tr>
+<tr><th>상담일</th><td></td><th>등록일</th><td></td><th>첫 수업일</th><td></td></tr>
+<tr><th>관리 프로그램 등록</th><td>□ 완료</td><th>교재 지급</th><td>□ 완료</td><th>학부모 안내</th><td>□ 완료</td></tr>
+</table>
+
+<p class="note">근거: 학원법 시행령 [별표 4], 개인정보 보호법 제15조·제22조·제23조 (만 14세 미만은 법정대리인 동의 필요, 건강 정보는 민감정보로 별도 동의)</p>
 <p class="note">무료아카데미월드 제공 양식 · 자유롭게 고쳐 쓰고 인쇄해 사용하세요. 법령은 바뀔 수 있으니 관할 교육지원청 안내를 함께 확인하세요.</p>
 </div>
 </body></html>
