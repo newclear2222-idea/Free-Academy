@@ -377,42 +377,23 @@ T["dismissal-notice.html"] = page("해고 통지서", """
 # 11. 퇴직금 정산 확인서
 T["severance-statement.html"] = page("퇴직금 정산 확인서", """
 <h1>퇴직금 정산 확인서</h1>
-<p class="sub">근로자퇴직급여 보장법 제8조·제9조 · 1년 이상 근무, 4주 평균 1주 15시간 이상 근로자 대상</p>
 <table>
-<tr><th style="width:20%">성명</th><td></td><th style="width:20%">담당 업무</th><td></td></tr>
+<tr><th style="width:22%">성명</th><td></td><th style="width:22%">담당 과목</th><td></td></tr>
 <tr><th>입사일</th><td>20___. ___. ___</td><th>퇴직일</th><td>20___. ___. ___</td></tr>
-<tr><th>재직일수</th><td>________일</td><th>퇴직 사유</th><td>□ 자진 퇴사 □ 계약 만료 □ 해고 □ 기타</td></tr>
 </table>
-<h2>1. 평균임금 계산 (퇴직 전 3개월)</h2>
-<div class="wrapx"><table>
-<tr><th>기간</th><th>일수</th><th>기본급</th><th>수당</th><th>합계</th></tr>
-<tr><td>___. ___. ~ ___. ___.</td><td></td><td></td><td></td><td></td></tr>
-<tr><td>___. ___. ~ ___. ___.</td><td></td><td></td><td></td><td></td></tr>
-<tr><td>___. ___. ~ ___. ___.</td><td></td><td></td><td></td><td></td></tr>
-<tr><th>3개월 합계</th><td>____일 (A)</td><td colspan="2"></td><td>____________원 (B)</td></tr>
-<tr><th>연간 상여금 × 3/12</th><td colspan="3"></td><td>____________원 (C)</td></tr>
-<tr><th>미사용 연차수당 × 3/12</th><td colspan="3">(전년도 발생분)</td><td>____________원 (D)</td></tr>
-<tr><th>1일 평균임금</th><td colspan="4">(B + C + D) ÷ A = ____________원 &nbsp; (통상임금보다 적으면 통상임금으로 계산)</td></tr>
-</table></div>
-<h2>2. 퇴직금</h2>
+<table style="margin-top:14px">
+<tr><th style="width:22%">지급일</th><td>20___년 ___월 ___일</td></tr>
+<tr><th>퇴직금</th><td>금 ______________________ 원정 (₩ ____________)</td></tr>
+<tr><th>지급 방법</th><td>□ 계좌이체 &nbsp; □ 현금 &nbsp; □ 기타 ________</td></tr>
+</table>
+<p style="margin:28px 0 8px;text-align:center;font-size:16px">원장은 위 금액을 퇴직금으로 지급하였고, 강사는 이를 틀림없이 받았음을 확인합니다.</p>
+<p style="text-align:center;margin:24px 0">20___년 ___월 ___일</p>
 <table>
-<tr><th style="width:30%">계산식</th><td>1일 평균임금 × 30일 × (재직일수 ÷ 365)</td></tr>
-<tr><th>퇴직금</th><td>____________원 × 30 × (______ ÷ 365) = <b>____________원</b></td></tr>
+<tr><th style="width:22%">원장</th><td>________________ 학원 &nbsp; 대표 ____________ (인)</td></tr>
+<tr><th>강사</th><td>____________ (서명)</td></tr>
 </table>
-<h2>3. 최종 정산</h2>
-<table>
-<tr><th style="width:30%">퇴직금</th><td style="text-align:right">원</td></tr>
-<tr><th>마지막 달 급여 (미지급분)</th><td style="text-align:right">원</td></tr>
-<tr><th>미사용 연차수당</th><td style="text-align:right">원</td></tr>
-<tr><th>퇴직소득세·지방소득세 (공제)</th><td style="text-align:right">− 원</td></tr>
-<tr><th>기타 공제 (4대보험 정산 등)</th><td style="text-align:right">− 원</td></tr>
-<tr><th>실 지급액</th><td style="text-align:right"><b>원</b></td></tr>
-<tr><th>지급일 / 방법</th><td>20___. ___. ___ (퇴직일부터 14일 이내) / □ 계좌이체 (은행 ______ 계좌 ____________)</td></tr>
-</table>
-<p class="note">퇴직소득세는 홈택스 "퇴직소득세 모의계산"으로 확인하고, 다음 달 10일까지 원천세로 신고·납부합니다. 퇴직연금(DC/DB)에 가입한 경우 연금 사업자를 통해 지급합니다.</p>
-<p style="margin-top:14px">위 금액을 정산하여 지급(수령)하였음을 확인합니다.</p>
-<div class="sign"><div>20___년 ___월 ___일</div><div>지급인: ________________ 학원 대표 ____________ (인)</div><div>수령인: ____________ (서명)</div></div>
-""", "근로자퇴직급여 보장법 제4조·제8조·제9조, 근로기준법 제2조(평균임금)·제36조")
+<p class="note">퇴직금은 퇴직일부터 14일 안에 지급해야 합니다. 금액은 1일 평균임금 × 30 × 재직일수 ÷ 365이며, 고용노동부 퇴직금 계산기로 확인할 수 있습니다.</p>
+""", "근로자퇴직급여 보장법 제8조·제9조")
 
 # 12. 재원 및 교육비 납입 증명서
 T["enrollment-certificate.html"] = page("재원 및 교육비 납입 증명서", """
