@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>교습비등 게시표</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<style>
+:root { --ink:#1d2433; --muted:#5d6676; --line:#9aa3b2; --soft:#eef1f6; --pen:#1f4fd1; }
+* { box-sizing:border-box; }
+body { margin:0; background:#e9ecf1; color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif; font-size:14px; line-height:1.55; }
+.bar { position:sticky; top:0; background:#fff; border-bottom:1px solid #d5d9e0; padding:10px max(16px, env(safe-area-inset-left,0px));
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.bar a, .bar button { font:inherit; font-size:13px; padding:6px 12px; border-radius:8px; border:1px solid #c7cdd6; background:#fff; color:var(--ink); text-decoration:none; cursor:pointer; }
+.bar button { background:var(--ink); color:#fff; border-color:var(--ink); }
+.bar span { color:var(--muted); font-size:13px; }
+.sheet { background:#fff; width:210mm; max-width:calc(100% - 32px); min-height:297mm; margin:20px auto; padding:16mm 15mm; box-shadow:0 1px 4px rgba(0,0,0,.12); }
+h1 { font-size:22px; margin:0 0 4px; text-align:center; letter-spacing:.02em; }
+.sub { text-align:center; color:var(--muted); font-size:12px; margin:0 0 14px; }
+h2 { font-size:15px; margin:18px 0 6px; }
+table { width:100%; border-collapse:collapse; margin:6px 0; table-layout:fixed; }
+th, td { border:1px solid var(--line); padding:7px 8px; vertical-align:top; word-break:keep-all; overflow-wrap:anywhere; }
+th { background:var(--soft); font-weight:600; text-align:center; }
+td.blank { height:30px; }
+.tall td { height:42px; }
+.note { font-size:12px; color:var(--muted); }
+.sign { margin-top:22px; display:grid; gap:10px; justify-items:end; }
+.check li { list-style:none; margin:4px 0; }
+.check li::before { content:"□ "; }
+ul.check { padding-left:4px; }
+.wrapx { overflow-x:auto; }
+@media print {
+  body { background:#fff; }
+  .bar { display:none; }
+  .sheet { box-shadow:none; margin:0; width:auto; max-width:none; min-height:0; padding:0; }
+  @page { size:A4; margin:14mm; }
+}
+</style></head>
+<body>
+<div class="bar"><a href="../index.html">← 무료아카데미월드</a><button type="button" onclick="window.print()">인쇄 / PDF로 저장</button>
+<span>칸을 눌러 바로 입력한 뒤 인쇄할 수 있습니다. 학원명 등은 직접 고쳐 쓰세요.</span></div>
+<div class="sheet" contenteditable="true" spellcheck="false">
+
+<h1>교습비등 게시표</h1>
+<p class="sub">교육지원청에 등록(신고)한 금액과 같게 적고 학원 안 잘 보이는 곳에 게시합니다.</p>
+<table><tr><th style="width:22%">학원명</th><td></td><th style="width:18%">등록번호</th><td></td></tr></table>
+<div class="wrapx"><table class="tall">
+<tr><th>교습과정</th><th>교습과목</th><th>정원</th><th>교습기간</th><th>총 교습시간(분)</th><th>교습비</th><th colspan="4">기타경비</th><th>합계</th></tr>
+<tr><th></th><th></th><th></th><th></th><th></th><th></th><th>모의고사비</th><th>재료비</th><th>피복비</th><th>급식비·기숙사비·차량비</th><th></th></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table></div>
+<ul class="note">
+<li>기타경비는 학원법 시행령 [별표 1]에 정한 항목(모의고사비, 재료비, 피복비, 급식비, 기숙사비, 차량비)만 받을 수 있습니다.</li>
+<li>등록한 금액을 넘겨 받거나, 게시하지 않으면 행정처분·과태료 대상입니다. 교습비를 바꿀 때는 교육지원청에 먼저 변경 등록하세요.</li>
+</ul>
+
+<p class="note">근거: 학원법 제15조, 시행령 제3조의2 [별표 1]</p>
+<p class="note">무료아카데미월드 제공 양식 · 자유롭게 고쳐 쓰고 인쇄해 사용하세요. 법령은 바뀔 수 있으니 관할 교육지원청 안내를 함께 확인하세요.</p>
+</div>
+</body></html>

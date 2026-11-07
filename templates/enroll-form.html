@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>수강 등록 신청서</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<style>
+:root { --ink:#1d2433; --muted:#5d6676; --line:#9aa3b2; --soft:#eef1f6; --pen:#1f4fd1; }
+* { box-sizing:border-box; }
+body { margin:0; background:#e9ecf1; color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif; font-size:14px; line-height:1.55; }
+.bar { position:sticky; top:0; background:#fff; border-bottom:1px solid #d5d9e0; padding:10px max(16px, env(safe-area-inset-left,0px));
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.bar a, .bar button { font:inherit; font-size:13px; padding:6px 12px; border-radius:8px; border:1px solid #c7cdd6; background:#fff; color:var(--ink); text-decoration:none; cursor:pointer; }
+.bar button { background:var(--ink); color:#fff; border-color:var(--ink); }
+.bar span { color:var(--muted); font-size:13px; }
+.sheet { background:#fff; width:210mm; max-width:calc(100% - 32px); min-height:297mm; margin:20px auto; padding:16mm 15mm; box-shadow:0 1px 4px rgba(0,0,0,.12); }
+h1 { font-size:22px; margin:0 0 4px; text-align:center; letter-spacing:.02em; }
+.sub { text-align:center; color:var(--muted); font-size:12px; margin:0 0 14px; }
+h2 { font-size:15px; margin:18px 0 6px; }
+table { width:100%; border-collapse:collapse; margin:6px 0; table-layout:fixed; }
+th, td { border:1px solid var(--line); padding:7px 8px; vertical-align:top; word-break:keep-all; overflow-wrap:anywhere; }
+th { background:var(--soft); font-weight:600; text-align:center; }
+td.blank { height:30px; }
+.tall td { height:42px; }
+.note { font-size:12px; color:var(--muted); }
+.sign { margin-top:22px; display:grid; gap:10px; justify-items:end; }
+.check li { list-style:none; margin:4px 0; }
+.check li::before { content:"□ "; }
+ul.check { padding-left:4px; }
+.wrapx { overflow-x:auto; }
+@media print {
+  body { background:#fff; }
+  .bar { display:none; }
+  .sheet { box-shadow:none; margin:0; width:auto; max-width:none; min-height:0; padding:0; }
+  @page { size:A4; margin:14mm; }
+}
+</style></head>
+<body>
+<div class="bar"><a href="../index.html">← 무료아카데미월드</a><button type="button" onclick="window.print()">인쇄 / PDF로 저장</button>
+<span>칸을 눌러 바로 입력한 뒤 인쇄할 수 있습니다. 학원명 등은 직접 고쳐 쓰세요.</span></div>
+<div class="sheet" contenteditable="true" spellcheck="false">
+
+<h1>수강 등록 신청서</h1>
+<p class="sub">______________ 학원</p>
+<h2>학생 정보</h2>
+<table>
+<tr><th style="width:18%">학생 이름</th><td></td><th style="width:18%">학교·학년</th><td></td></tr>
+<tr><th>생년월일</th><td></td><th>학생 연락처</th><td></td></tr>
+<tr><th>보호자 이름</th><td></td><th>보호자 연락처</th><td></td></tr>
+<tr><th>주소</th><td colspan="3"></td></tr>
+</table>
+<h2>수강 내용</h2>
+<table>
+<tr><th style="width:18%">수강 과목·반</th><td></td><th style="width:18%">수업 요일·시간</th><td></td></tr>
+<tr><th>수강 시작일</th><td></td><th>교습기간</th><td>□ 1개월 □ ___개월</td></tr>
+<tr><th>교습비</th><td>월 __________원</td><th>기타경비</th><td>__________원 (항목: ________)</td></tr>
+<tr><th>납부 방법</th><td colspan="3">□ 카드 □ 계좌이체 □ 현금 (현금은 현금영수증 발급) &nbsp; 납부일: 매월 ____일</td></tr>
+</table>
+<h2>상담 메모 (현재 성적, 목표, 특이사항)</h2>
+<table><tr><td style="height:70px"></td></tr></table>
+<h2>교습비 반환 안내</h2>
+<p class="note">교습비는 「학원법 시행령」 [별표 4] 반환기준에 따라 반환합니다. 1개월 이내 교습: 시작 전 전액, 1/3 경과 전 2/3, 1/2 경과 전 1/2, 1/2 경과 후 반환 없음. 반환사유 발생일부터 5일 이내 반환합니다.</p>
+<h2>개인정보 수집·이용 동의</h2>
+<table>
+<tr><th style="width:22%">수집 항목</th><td>학생·보호자 이름, 연락처, 학교·학년, 생년월일, 주소</td></tr>
+<tr><th>이용 목적</th><td>수강 관리, 출결·학습 안내, 교습비 청구·영수증 발급, 상담</td></tr>
+<tr><th>보유 기간</th><td>퇴원 후 1년 (관계 법령에 따라 보존이 필요한 경우 그 기간)</td></tr>
+<tr><th>동의 거부 권리</th><td>동의를 거부할 수 있으나, 거부 시 수강 등록이 어려울 수 있습니다.</td></tr>
+</table>
+<p>위 내용을 확인하였으며 개인정보 수집·이용에 □ 동의합니다 □ 동의하지 않습니다.</p>
+<p>(선택) 학원 소식·이벤트 안내 문자 수신에 □ 동의합니다 □ 동의하지 않습니다.</p>
+<div class="sign"><div>20____년 ____월 ____일</div><div>학생: ____________ (서명) &nbsp; 보호자: ____________ (서명)</div></div>
+
+<p class="note">근거: 학원법 시행령 [별표 4], 개인정보 보호법 제15조·제22조 (만 14세 미만은 법정대리인 동의 필요)</p>
+<p class="note">무료아카데미월드 제공 양식 · 자유롭게 고쳐 쓰고 인쇄해 사용하세요. 법령은 바뀔 수 있으니 관할 교육지원청 안내를 함께 확인하세요.</p>
+</div>
+</body></html>
