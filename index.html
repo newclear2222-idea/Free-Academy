@@ -77,6 +77,19 @@ h2.sec { font-family: var(--font-display); font-weight: 400; font-size: 26px; ma
 .form b { font-weight: 600; font-size: 15px; }
 .form span { font-size: 13px; color: var(--muted); }
 .form em { font-style: normal; font-size: 11px; letter-spacing: .04em; color: var(--pen); }
+.form { font: inherit; text-align: left; cursor: pointer; }
+dialog.viewer { border: none; padding: 0; border-radius: 14px; width: min(920px, calc(100vw - 24px)); height: min(92vh, 1100px);
+  background: var(--sheet); color: var(--ink); box-shadow: 0 10px 40px rgba(0,0,0,.35); }
+dialog.viewer::backdrop { background: rgba(10, 14, 22, .55); }
+.vbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.vbar b { flex: 1 1 auto; font-size: 16px; min-width: 0; }
+.vbar a, .vbar button { font: inherit; font-size: 13px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--sheet); color: var(--ink); text-decoration: none; cursor: pointer; }
+.vbar .primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.vhint { margin: 0; padding: 8px 14px; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line); }
+.vbody { height: calc(100% - 100px); }
+.vbody iframe { width: 100%; height: 100%; border: 0; background: #e9ecf1; }
+.vbody pre { margin: 0; padding: 14px; height: 100%; overflow: auto; font-size: 12px; background: var(--paper); }
 .calc { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; }
 .calc h3 { margin: 0; font-size: 17px; }
 .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -187,6 +200,18 @@ footer { margin-top: 40px; font-size: 13px; color: var(--muted); }
       <span class="why" style="font-size:12px;color:var(--muted)">학원법 시행령 [별표 4] 기준. 학습자 본인 의사로 그만둔 경우이며, 5일 이내 반환해야 합니다.</span>
     </form>
   </div>
+
+  <dialog class="viewer" id="viewer" aria-labelledby="v-title">
+    <div class="vbar">
+      <b id="v-title"></b>
+      <button type="button" class="primary" id="v-print">인쇄 / PDF</button>
+      <button type="button" id="v-copy" hidden>내용 복사</button>
+      <a id="v-open" target="_blank" rel="noopener">공개 사이트에서 열기</a>
+      <button type="button" id="v-close">닫기</button>
+    </div>
+    <p class="vhint" id="v-hint"></p>
+    <div class="vbody" id="v-body"></div>
+  </dialog>
 
   <div class="searchbar">
     <input type="search" id="q" placeholder="검색: 출결, 문자비, 강사 채용, 지원금, 홍보, 세금 …" aria-label="자료 검색">
@@ -318,8 +343,58 @@ function saveStars() { try { localStorage.setItem("faw-stars", JSON.stringify([.
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+const SITE = "https://newclear2222-idea.github.io/Free-Academy/";
 $("#forms").innerHTML = FORMS.map(([f, name, sub, tag]) =>
-  `<a class="form" href="templates/${f}" target="_blank" rel="noopener"><em>${esc(tag)}</em><b>${esc(name)}</b><span>${esc(sub)}</span></a>`).join("");
+  `<button type="button" class="form" data-form="${esc(f)}" data-name="${esc(name)}"><em>${esc(tag)}</em><b>${esc(name)}</b><span>${esc(sub)}</span></button>`).join("");
+
+// 양식은 새 창 대신 페이지 안 창에서 연다 (미리보기 환경은 새 창·다운로드를 막음)
+const viewer = $("#viewer");
+let csvText = "";
+async function openForm(f, name) {
+  $("#v-title").textContent = name;
+  $("#v-open").href = SITE + "templates/" + f;
+  const isCsv = f.endsWith(".csv");
+  $("#v-print").hidden = isCsv;
+  $("#v-copy").hidden = !isCsv;
+  $("#v-hint").textContent = isCsv
+    ? "[내용 복사]를 누른 뒤 엑셀이나 구글 시트의 A1 칸에 붙여넣으세요. 공개 사이트에서는 파일로 바로 받을 수 있습니다."
+    : "칸을 눌러 바로 입력할 수 있습니다. 인쇄가 안 되면 [공개 사이트에서 열기]로 열어 인쇄하세요.";
+  $("#v-body").innerHTML = "";
+  if (typeof viewer.showModal === "function") viewer.showModal(); else viewer.setAttribute("open", "");
+  try {
+    const res = await fetch("templates/" + f);
+    if (!res.ok) throw new Error(res.status);
+    const text = (await res.text()).replace(/^\uFEFF/, "");
+    if (isCsv) {
+      csvText = text.replace(/,/g, "\t");
+      const pre = document.createElement("pre"); pre.textContent = text; $("#v-body").appendChild(pre);
+    } else {
+      const fr = document.createElement("iframe");
+      fr.title = name;
+      fr.srcdoc = text.replace("</head>", "<style>.bar{display:none!important}</style></head>");
+      $("#v-body").appendChild(fr);
+    }
+  } catch (e) {
+    $("#v-body").innerHTML = `<p class="vhint">양식을 불러오지 못했습니다. [공개 사이트에서 열기]를 눌러 주세요.</p>`;
+  }
+}
+$("#forms").addEventListener("click", e => {
+  const b = e.target.closest("[data-form]"); if (b) openForm(b.dataset.form, b.dataset.name);
+});
+$("#v-close").addEventListener("click", () => viewer.close ? viewer.close() : viewer.removeAttribute("open"));
+$("#v-print").addEventListener("click", () => {
+  const fr = $("#v-body iframe");
+  try { fr && fr.contentWindow.print(); } catch (e) {}
+});
+$("#v-copy").addEventListener("click", async () => {
+  const btn = $("#v-copy");
+  try { await navigator.clipboard.writeText(csvText); btn.textContent = "복사됨"; }
+  catch (e) {
+    const pre = $("#v-body pre"); if (pre) { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+    btn.textContent = "선택됨, Ctrl+C로 복사";
+  }
+  setTimeout(() => { btn.textContent = "내용 복사"; }, 2500);
+});
 
 function matches(it) {
   if (!state.q) return true;
