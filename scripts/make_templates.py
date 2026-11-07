@@ -350,6 +350,101 @@ T["teacher-contract.html"] = page("학원 강사 계약서", CONTRACT_CSS + """
 """, "근로기준법 제17조·제20조, 고용노동부 표준근로계약서(2025), 소득세법 제127조, 아동·청소년의 성보호에 관한 법률 제56조, 아동복지법 제29조의3")
 
 
+# 10. 해고 통지서
+T["dismissal-notice.html"] = page("해고 통지서", """
+<p class="note" style="background:var(--soft);padding:8px 10px">근로기준법 제27조: 해고는 사유와 시기를 <b>서면</b>으로 알려야 효력이 있습니다(문자·카톡만으로는 무효가 될 수 있음). 제26조: 30일 전에 예고하지 않으면 30일분 이상의 통상임금(해고예고수당)을 줘야 합니다(계속 근무 3개월 미만 등은 예외). 상시 5명 이상 학원은 해고에 정당한 이유가 필요합니다(제23조). 프리랜서(위촉) 강사는 이 양식 대신 계약서의 해지 조항에 따라 해지 통보서를 보내세요.</p>
+<h1>해고 통지서</h1>
+<p class="sub">근로기준법 제26조·제27조</p>
+<table>
+<tr><th style="width:20%">성명</th><td></td><th style="width:20%">담당 업무</th><td>________ 과목 강사</td></tr>
+<tr><th>입사일</th><td>20___. ___. ___</td><th>근무 형태</th><td>□ 정규 □ 단시간 □ 기간제</td></tr>
+</table>
+<p style="margin-top:14px">귀하에게 다음과 같이 근로계약을 해지(해고)함을 알려 드립니다.</p>
+<table>
+<tr><th style="width:20%">해고일</th><td>20___년 ___월 ___일</td></tr>
+<tr><th>해고 사유</th><td style="height:120px">(구체적인 사실을 적습니다. 예: 언제, 무엇을, 몇 차례, 그동안 한 경고·면담 내용)</td></tr>
+<tr><th>근거</th><td>□ 근로계약서 제___조 □ 취업규칙 제___조 □ 기타 ________</td></tr>
+<tr><th>해고 예고</th><td>□ 해고일 30일 전 예고함 (통지일: 20___. ___. ___)<br>□ 30일 전 예고하지 않음 → 해고예고수당 ____________원 지급 (지급일: 20___. ___. ___)<br>□ 예고 예외 해당 (사유: ________)</td></tr>
+<tr><th>정산 안내</th><td>마지막 달 급여, 미사용 연차수당, 퇴직금(1년 이상 근무 시)은 퇴직일부터 14일 이내 지급합니다. 4대보험 상실 신고와 교육지원청 강사 해임 통보(15일 이내)를 진행합니다.</td></tr>
+</table>
+<p class="note">이 해고에 이의가 있으면 해고일부터 3개월 이내에 관할 지방노동위원회에 부당해고 구제신청을 할 수 있습니다. (상시 5명 이상 사업장)</p>
+<div class="sign"><div>20___년 ___월 ___일</div><div>________________ 학원 &nbsp; 대표 ____________ (인)</div></div>
+<h2>수령 확인</h2>
+<p>본인은 위 해고 통지서를 20___년 ___월 ___일에 받았습니다. &nbsp;&nbsp; 성명: ____________ (서명)</p>
+<p class="note">받기를 거부하면 내용증명 우편이나 이메일(발송 기록 보관)로 보내 두세요.</p>
+""", "근로기준법 제23조·제26조·제27조·제28조, 제36조(금품 청산)")
+
+# 11. 퇴직금 정산 확인서
+T["severance-statement.html"] = page("퇴직금 정산 확인서", """
+<h1>퇴직금 정산 확인서</h1>
+<p class="sub">근로자퇴직급여 보장법 제8조·제9조 · 1년 이상 근무, 4주 평균 1주 15시간 이상 근로자 대상</p>
+<table>
+<tr><th style="width:20%">성명</th><td></td><th style="width:20%">담당 업무</th><td></td></tr>
+<tr><th>입사일</th><td>20___. ___. ___</td><th>퇴직일</th><td>20___. ___. ___</td></tr>
+<tr><th>재직일수</th><td>________일</td><th>퇴직 사유</th><td>□ 자진 퇴사 □ 계약 만료 □ 해고 □ 기타</td></tr>
+</table>
+<h2>1. 평균임금 계산 (퇴직 전 3개월)</h2>
+<div class="wrapx"><table>
+<tr><th>기간</th><th>일수</th><th>기본급</th><th>수당</th><th>합계</th></tr>
+<tr><td>___. ___. ~ ___. ___.</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>___. ___. ~ ___. ___.</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>___. ___. ~ ___. ___.</td><td></td><td></td><td></td><td></td></tr>
+<tr><th>3개월 합계</th><td>____일 (A)</td><td colspan="2"></td><td>____________원 (B)</td></tr>
+<tr><th>연간 상여금 × 3/12</th><td colspan="3"></td><td>____________원 (C)</td></tr>
+<tr><th>미사용 연차수당 × 3/12</th><td colspan="3">(전년도 발생분)</td><td>____________원 (D)</td></tr>
+<tr><th>1일 평균임금</th><td colspan="4">(B + C + D) ÷ A = ____________원 &nbsp; (통상임금보다 적으면 통상임금으로 계산)</td></tr>
+</table></div>
+<h2>2. 퇴직금</h2>
+<table>
+<tr><th style="width:30%">계산식</th><td>1일 평균임금 × 30일 × (재직일수 ÷ 365)</td></tr>
+<tr><th>퇴직금</th><td>____________원 × 30 × (______ ÷ 365) = <b>____________원</b></td></tr>
+</table>
+<h2>3. 최종 정산</h2>
+<table>
+<tr><th style="width:30%">퇴직금</th><td style="text-align:right">원</td></tr>
+<tr><th>마지막 달 급여 (미지급분)</th><td style="text-align:right">원</td></tr>
+<tr><th>미사용 연차수당</th><td style="text-align:right">원</td></tr>
+<tr><th>퇴직소득세·지방소득세 (공제)</th><td style="text-align:right">− 원</td></tr>
+<tr><th>기타 공제 (4대보험 정산 등)</th><td style="text-align:right">− 원</td></tr>
+<tr><th>실 지급액</th><td style="text-align:right"><b>원</b></td></tr>
+<tr><th>지급일 / 방법</th><td>20___. ___. ___ (퇴직일부터 14일 이내) / □ 계좌이체 (은행 ______ 계좌 ____________)</td></tr>
+</table>
+<p class="note">퇴직소득세는 홈택스 "퇴직소득세 모의계산"으로 확인하고, 다음 달 10일까지 원천세로 신고·납부합니다. 퇴직연금(DC/DB)에 가입한 경우 연금 사업자를 통해 지급합니다.</p>
+<p style="margin-top:14px">위 금액을 정산하여 지급(수령)하였음을 확인합니다.</p>
+<div class="sign"><div>20___년 ___월 ___일</div><div>지급인: ________________ 학원 대표 ____________ (인)</div><div>수령인: ____________ (서명)</div></div>
+""", "근로자퇴직급여 보장법 제4조·제8조·제9조, 근로기준법 제2조(평균임금)·제36조")
+
+# 12. 재원 및 교육비 납입 증명서
+T["enrollment-certificate.html"] = page("재원 및 교육비 납입 증명서", """
+<h1>재원 및 교육비 납입 증명서</h1>
+<p class="sub">발급번호 제 ______ 호</p>
+<h2>학생</h2>
+<table>
+<tr><th style="width:20%">학생 이름</th><td></td><th style="width:20%">학교·학년</th><td></td></tr>
+<tr><th>보호자 (납입자)</th><td></td><th>제출처</th><td></td></tr>
+</table>
+<h2>재원 내용</h2>
+<table>
+<tr><th style="width:20%">수강 과목·과정</th><td colspan="3"></td></tr>
+<tr><th>재원 기간</th><td colspan="3">20___년 ___월 ___일 ~ □ 현재 재원 중 □ 20___년 ___월 ___일</td></tr>
+</table>
+<h2>교육비 납입 내역</h2>
+<div class="wrapx"><table>
+<tr><th style="width:16%">납입 월</th><th>납입일</th><th>교습비</th><th>기타경비</th><th>납입액</th><th>결제 수단</th></tr>
+""" + "".join(f'<tr><td>20___년 {m}월</td><td></td><td></td><td></td><td></td><td></td></tr>' for m in range(1, 13)) + """
+<tr><th>합계</th><td></td><td></td><td></td><td><b>원</b></td><td></td></tr>
+</table></div>
+<p style="margin-top:12px">위 학생이 본 학원에 재원하였으며, 위와 같이 교육비를 납입하였음을 증명합니다.</p>
+<table style="margin-top:10px">
+<tr><th style="width:20%">학원명</th><td></td><th style="width:20%">학원 등록번호</th><td></td></tr>
+<tr><th>사업자등록번호</th><td></td><th>연락처</th><td></td></tr>
+<tr><th>주소</th><td colspan="3"></td></tr>
+</table>
+<div class="sign"><div>20___년 ___월 ___일</div><div>________________ 학원 &nbsp; 대표 ____________ (직인)</div></div>
+<p class="note">회사 교육비·자녀학자금 지원 제출용입니다. 연말정산 교육비 세액공제는 초·중·고생 학원비는 대상이 아니고, 취학 전 아동의 학원비만 해당합니다. 카드·현금영수증 결제분은 연말정산 간소화 자료로 따로 조회됩니다.</p>
+""", "소득세법 제59조의4(교육비 세액공제)")
+
+
 for name, html in T.items():
     with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
         f.write(html)

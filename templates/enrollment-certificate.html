@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>재원 및 교육비 납입 증명서</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<style>
+:root { --ink:#1d2433; --muted:#5d6676; --line:#9aa3b2; --soft:#eef1f6; --pen:#1f4fd1; }
+* { box-sizing:border-box; }
+body { margin:0; background:#e9ecf1; color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif; font-size:14px; line-height:1.55; }
+.bar { position:sticky; top:0; background:#fff; border-bottom:1px solid #d5d9e0; padding:10px max(16px, env(safe-area-inset-left,0px));
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.bar a, .bar button { font:inherit; font-size:13px; padding:6px 12px; border-radius:8px; border:1px solid #c7cdd6; background:#fff; color:var(--ink); text-decoration:none; cursor:pointer; }
+.bar button { background:var(--ink); color:#fff; border-color:var(--ink); }
+.bar span { color:var(--muted); font-size:13px; }
+.sheet { background:#fff; width:210mm; max-width:calc(100% - 32px); min-height:297mm; margin:20px auto; padding:16mm 15mm; box-shadow:0 1px 4px rgba(0,0,0,.12); }
+h1 { font-size:22px; margin:0 0 4px; text-align:center; letter-spacing:.02em; }
+.sub { text-align:center; color:var(--muted); font-size:12px; margin:0 0 14px; }
+h2 { font-size:15px; margin:18px 0 6px; }
+table { width:100%; border-collapse:collapse; margin:6px 0; table-layout:fixed; }
+th, td { border:1px solid var(--line); padding:7px 8px; vertical-align:top; word-break:keep-all; overflow-wrap:anywhere; }
+th { background:var(--soft); font-weight:600; text-align:center; }
+td.blank { height:30px; }
+.tall td { height:42px; }
+.note { font-size:12px; color:var(--muted); }
+.sign { margin-top:22px; display:grid; gap:10px; justify-items:end; }
+.check li { list-style:none; margin:4px 0; }
+.check li::before { content:"□ "; }
+ul.check { padding-left:4px; }
+.wrapx { overflow-x:auto; }
+@media print {
+  body { background:#fff; }
+  .bar { display:none; }
+  .sheet { box-shadow:none; margin:0; width:auto; max-width:none; min-height:0; padding:0; }
+  @page { size:A4; margin:14mm; }
+}
+</style></head>
+<body>
+<div class="bar"><a href="../index.html">← 무료아카데미월드</a><button type="button" onclick="window.print()">인쇄 / PDF로 저장</button>
+<span>칸을 눌러 바로 입력한 뒤 인쇄할 수 있습니다. 학원명 등은 직접 고쳐 쓰세요.</span></div>
+<div class="sheet" contenteditable="true" spellcheck="false">
+
+<h1>재원 및 교육비 납입 증명서</h1>
+<p class="sub">발급번호 제 ______ 호</p>
+<h2>학생</h2>
+<table>
+<tr><th style="width:20%">학생 이름</th><td></td><th style="width:20%">학교·학년</th><td></td></tr>
+<tr><th>보호자 (납입자)</th><td></td><th>제출처</th><td></td></tr>
+</table>
+<h2>재원 내용</h2>
+<table>
+<tr><th style="width:20%">수강 과목·과정</th><td colspan="3"></td></tr>
+<tr><th>재원 기간</th><td colspan="3">20___년 ___월 ___일 ~ □ 현재 재원 중 □ 20___년 ___월 ___일</td></tr>
+</table>
+<h2>교육비 납입 내역</h2>
+<div class="wrapx"><table>
+<tr><th style="width:16%">납입 월</th><th>납입일</th><th>교습비</th><th>기타경비</th><th>납입액</th><th>결제 수단</th></tr>
+<tr><td>20___년 1월</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>20___년 2월</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>20___년 3월</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>20___년 4월</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>20___년 5월</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>20___년 6월</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>20___년 7월</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>20___년 8월</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>20___년 9월</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>20___년 10월</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>20___년 11월</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>20___년 12월</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>합계</th><td></td><td></td><td></td><td><b>원</b></td><td></td></tr>
+</table></div>
+<p style="margin-top:12px">위 학생이 본 학원에 재원하였으며, 위와 같이 교육비를 납입하였음을 증명합니다.</p>
+<table style="margin-top:10px">
+<tr><th style="width:20%">학원명</th><td></td><th style="width:20%">학원 등록번호</th><td></td></tr>
+<tr><th>사업자등록번호</th><td></td><th>연락처</th><td></td></tr>
+<tr><th>주소</th><td colspan="3"></td></tr>
+</table>
+<div class="sign"><div>20___년 ___월 ___일</div><div>________________ 학원 &nbsp; 대표 ____________ (직인)</div></div>
+<p class="note">회사 교육비·자녀학자금 지원 제출용입니다. 연말정산 교육비 세액공제는 초·중·고생 학원비는 대상이 아니고, 취학 전 아동의 학원비만 해당합니다. 카드·현금영수증 결제분은 연말정산 간소화 자료로 따로 조회됩니다.</p>
+
+<p class="note">근거: 소득세법 제59조의4(교육비 세액공제)</p>
+<p class="note">무료아카데미월드 제공 양식 · 자유롭게 고쳐 쓰고 인쇄해 사용하세요. 법령은 바뀔 수 있으니 관할 교육지원청 안내를 함께 확인하세요.</p>
+</div>
+</body></html>
