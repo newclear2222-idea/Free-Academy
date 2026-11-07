@@ -139,7 +139,6 @@ T["enroll-form.html"] = page("수강 등록 신청서", ENROLL_CSS + """
 <h1>원생 등록·상담 카드</h1>
 <p class="sub">______________ 학원 · 등록번호 ________ · 담당 강사 ________</p>
 
-<div class="ehead">
 <table>
 <tr><th style="width:17%">학생 이름</th><td></td><th style="width:17%">성별</th><td>□ 남 □ 여</td></tr>
 <tr><th>생년월일</th><td></td><th>학생 연락처</th><td></td></tr>
@@ -148,8 +147,6 @@ T["enroll-form.html"] = page("수강 등록 신청서", ENROLL_CSS + """
 <tr><th>보호자</th><td>이름 ________ (관계: ____)</td><th>보호자 연락처</th><td></td></tr>
 <tr><th>비상 연락처</th><td></td><th>알게 된 경로</th><td>□ 지인 □ 블로그 □ 지도 □ 전단 □ 기타</td></tr>
 </table>
-<div class="photo">사진<br>(3×4)</div>
-</div>
 
 <table style="margin-top:10px"><tr><th style="width:17%">학교 시험 점수</th><td style="height:44px"></td></tr></table>
 
