@@ -25,7 +25,7 @@ sh scripts/build.sh
 ["분류ID", "이름", "운영 기관", "https://주소", "무엇을 할 수 있나", "아끼는 것", "free 또는 plan"]
 ```
 
-분류ID: `erp` `admin` `tax` `labor` `fund` `class` `elem` `midexam` `highexam` `nonsul`
+분류ID: `erp` `admin` `tax` `labor` `fund` `class` `elem` `midexam` `highexam` `bank` `nonsul`
 
 ## 수록 원칙
 
