@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>수강 등록 신청서</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<style>
+:root { --ink:#1d2433; --muted:#5d6676; --line:#9aa3b2; --soft:#eef1f6; --pen:#1f4fd1; }
+* { box-sizing:border-box; }
+body { margin:0; background:#e9ecf1; color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif; font-size:14px; line-height:1.55; }
+.bar { position:sticky; top:0; background:#fff; border-bottom:1px solid #d5d9e0; padding:10px max(16px, env(safe-area-inset-left,0px));
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.bar a, .bar button { font:inherit; font-size:13px; padding:6px 12px; border-radius:8px; border:1px solid #c7cdd6; background:#fff; color:var(--ink); text-decoration:none; cursor:pointer; }
+.bar button { background:var(--ink); color:#fff; border-color:var(--ink); }
+.bar span { color:var(--muted); font-size:13px; }
+.sheet { background:#fff; width:210mm; max-width:calc(100% - 32px); min-height:297mm; margin:20px auto; padding:16mm 15mm; box-shadow:0 1px 4px rgba(0,0,0,.12); }
+h1 { font-size:22px; margin:0 0 4px; text-align:center; letter-spacing:.02em; }
+.sub { text-align:center; color:var(--muted); font-size:12px; margin:0 0 14px; }
+h2 { font-size:15px; margin:18px 0 6px; }
+table { width:100%; border-collapse:collapse; margin:6px 0; table-layout:fixed; }
+th, td { border:1px solid var(--line); padding:7px 8px; vertical-align:top; word-break:keep-all; overflow-wrap:anywhere; }
+th { background:var(--soft); font-weight:600; text-align:center; }
+td.blank { height:30px; }
+.tall td { height:42px; }
+.note { font-size:12px; color:var(--muted); }
+.sign { margin-top:22px; display:grid; gap:10px; justify-items:end; }
+.check li { list-style:none; margin:4px 0; }
+.check li::before { content:"□ "; }
+ul.check { padding-left:4px; }
+.wrapx { overflow-x:auto; }
+@media print {
+  body { background:#fff; }
+  .bar { display:none; }
+  .sheet { box-shadow:none; margin:0; width:auto; max-width:none; min-height:0; padding:0; }
+  @page { size:A4; margin:14mm; }
+}
+</style></head>
+<body>
+<div class="bar"><a href="../index.html">← 무료아카데미월드</a><button type="button" onclick="window.print()">인쇄 / PDF로 저장</button>
+<span>칸을 눌러 바로 입력한 뒤 인쇄할 수 있습니다. 학원명 등은 직접 고쳐 쓰세요.</span></div>
+<div class="sheet" contenteditable="true" spellcheck="false">
+
+<style>
+.ehead { display:grid; grid-template-columns: 1fr 30mm; gap:10px; align-items:stretch; }
+.photo { border:1px dashed var(--line); display:grid; place-items:center; color:var(--muted); font-size:12px; min-height:38mm; text-align:center; }
+.two { display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
+.sec { display:flex; align-items:center; gap:8px; margin:16px 0 6px; }
+.sec h2 { margin:0; }
+.sec span { font-size:12px; color:var(--muted); }
+td.c, th.c { text-align:center; }
+.boxes { display:flex; flex-wrap:wrap; gap:4px 14px; }
+.office { margin-top:14px; border:1.5px solid var(--ink); }
+.office th { background:#dfe4ec; }
+@media (max-width:640px) { .ehead, .two { grid-template-columns: 1fr; } .photo { min-height:24mm; } }
+</style>
+
+<h1>원생 등록·상담 카드</h1>
+<p class="sub">______________ 학원 · 등록번호 ________ · 담당 강사 ________</p>
+
+<table>
+<tr><th style="width:17%">학생 이름</th><td></td><th style="width:17%">성별</th><td>□ 남 □ 여</td></tr>
+<tr><th>학생 연락처</th><td colspan="3"></td></tr>
+<tr><th>학교·학년</th><td colspan="3">________ 학교 ____학년</td></tr>
+<tr><th>주소</th><td colspan="3"></td></tr>
+<tr><th>보호자 연락처</th><td colspan="3"></td></tr>
+<tr><th>알게 된 경로</th><td colspan="3">□ 지인 □ 블로그 □ 지도 □ 전단 □ 기타</td></tr>
+</table>
+
+<table style="margin-top:10px">
+<tr><th style="width:17%">학교 시험 점수</th><td style="height:44px"></td></tr>
+<tr><th>입학 테스트 점수</th><td style="height:44px"></td></tr>
+</table>
+
+<div class="sec"><h2>특이사항</h2></div>
+<table>
+<tr><th style="width:20%">학습 성향</th><td><div class="boxes"><span>□ 꼼꼼함</span><span>□ 빠르지만 실수 많음</span><span>□ 질문을 잘 함</span><span>□ 집중 시간 짧음</span><span>□ 숙제 관리 필요</span></div></td></tr>
+<tr><th>목표</th><td>□ 내신 □ 수능·모의고사 □ 선행 □ 기초 보충 □ 특목·자사고 □ 기타 ______ &nbsp; 목표 점수·등급: ______</td></tr>
+<tr><th>이전 학원 / 과외</th><td>기관 ________ · 기간 ________ · 그만둔 이유 ________________</td></tr>
+<tr><th>건강·알레르기</th><td>□ 없음 □ 있음: ________________ (복용 약, 주의할 점)</td></tr>
+<tr><th>등하원</th><td>□ 혼자 □ 보호자 픽업 □ 학원 차량 (탑승 위치: ________) · 형제자매 재원: □ 없음 □ 있음 ______</td></tr>
+<tr><th>보호자 요청</th><td style="height:46px"></td></tr>
+<tr><th>상담자 메모</th><td style="height:46px"></td></tr>
+</table>
+
+<div class="sec"><h2>희망 수업</h2></div>
+<table>
+<tr><th style="width:17%">희망 과목·반</th><td></td><th style="width:17%">희망 요일·시간</th><td></td></tr>
+<tr><th>수업 시작 예정일</th><td></td><th>상담자</th><td></td></tr>
+</table>
+
+<table class="office">
+<tr><th colspan="6">학원 기록란</th></tr>
+<tr><th>상담일</th><td></td><th>등록일</th><td></td><th>첫 수업일</th><td></td></tr>
+<tr><th>관리 프로그램 등록</th><td>□ 완료</td><th>교재 지급</th><td>□ 완료</td><th>학부모 안내</th><td>□ 완료</td></tr>
+</table>
+
+
+<p class="note">무료아카데미월드 제공 양식 · 자유롭게 고쳐 쓰고 인쇄해 사용하세요. 법령은 바뀔 수 있으니 관할 교육지원청 안내를 함께 확인하세요.</p>
+</div>
+</body></html>

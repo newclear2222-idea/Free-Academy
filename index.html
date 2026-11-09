@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="무료아카데미월드">
+<meta property="og:title" content="무료아카데미월드 | 학원 운영비 아끼는 무료 자료 모음">
+<meta property="og:description" content="초·중·고 기출, 무료 문제은행, 약술형 논술, 사설 모의고사부터 관리 프로그램·세무·노무·지원금·운영 양식까지 전부 무료.">
+<meta property="og:url" content="https://newclear2222-idea.github.io/Free-Academy/">
+<meta property="og:image" content="https://newclear2222-idea.github.io/Free-Academy/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1f4fd1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f4fd1'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3E무%3C/text%3E%3C/svg%3E">
+<title>무료아카데미월드</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="학원 원장님을 위한 무료 자료 모음. 초·중·고 기출과 무료 문제은행, 약술형 논술, 사설 모의고사, 무료 관리 프로그램, 세무·노무 도구, 지원금, 바로 인쇄하는 운영 양식.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+/* Layout: 원장실 업무철. 상단 제목 + 검색, 바로 쓰는 양식과 환불 계산기, 왼쪽 업무 분류 탭(모바일은 가로 스크롤), 오른쪽 자료 카드 */
+:root {
+  --paper: #f6f7f4;
+  --sheet: #ffffff;
+  --ink: #1d2433;
+  --muted: #5d6676;
+  --line: #dde1e6;
+  --pen: #1f4fd1;
+  --pen-soft: #e7edfc;
+  --mark: #ffe680;
+  --free: #1f7a4d;
+  --free-soft: #e3f3ea;
+  --cond: #8a5a00;
+  --cond-soft: #fbf0d9;
+  --font-display: "Do Hyeon", "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161f; --sheet: #1a1f2b; --ink: #e8ebf2; --muted: #a2aabb; --line: #2c3343;
+    --pen: #8aa8ff; --pen-soft: #23304f; --mark: #6b5a12;
+    --free: #6fd3a0; --free-soft: #173326; --cond: #f0c46b; --cond-soft: #3a2e14;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161f; --sheet: #1a1f2b; --ink: #e8ebf2; --muted: #a2aabb; --line: #2c3343;
+  --pen: #8aa8ff; --pen-soft: #23304f; --mark: #6b5a12;
+  --free: #6fd3a0; --free-soft: #173326; --cond: #f0c46b; --cond-soft: #3a2e14;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-size: 15px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 48px;
+}
+a { color: var(--pen); }
+:focus-visible { outline: 2px solid var(--pen); outline-offset: 2px; border-radius: 4px; }
+.wrap { max-width: 1120px; margin: 0 auto; }
+
+header.top { padding-block: 32px 18px; display: grid; gap: 12px; }
+.brand { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+h1 {
+  font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 6vw, 44px);
+  line-height: 1.1; margin: 0; letter-spacing: -0.01em; text-wrap: balance;
+}
+h1 .hl { background: linear-gradient(transparent 58%, var(--mark) 58%); padding: 0 2px; }
+.lede { margin: 0; color: var(--muted); max-width: 64ch; }
+.count { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; }
+h2.sec { font-family: var(--font-display); font-weight: 400; font-size: 26px; margin: 0 0 4px; line-height: 1.2; }
+.secp { margin: 0 0 14px; color: var(--muted); font-size: 14px; max-width: 70ch; }
+
+/* 바로 쓰는 양식 + 계산기 */
+.tools { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 20px; margin-bottom: 36px; }
+.forms { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+.form {
+  display: grid; gap: 4px; padding: 12px 14px; border-radius: 10px; text-decoration: none; color: var(--ink);
+  background: var(--sheet); border: 1px dashed var(--line);
+}
+.form:hover { border-color: var(--pen); border-style: solid; }
+.form b { font-weight: 600; font-size: 15px; }
+.form span { font-size: 13px; color: var(--muted); }
+.form em { font-style: normal; font-size: 11px; letter-spacing: .04em; color: var(--pen); }
+.form { font: inherit; text-align: left; cursor: pointer; }
+dialog.viewer { border: none; padding: 0; border-radius: 14px; width: min(920px, calc(100vw - 24px)); height: min(92vh, 1100px);
+  background: var(--sheet); color: var(--ink); box-shadow: 0 10px 40px rgba(0,0,0,.35); }
+dialog.viewer::backdrop { background: rgba(10, 14, 22, .55); }
+.vbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.vbar b { flex: 1 1 auto; font-size: 16px; min-width: 0; }
+.vbar a, .vbar button { font: inherit; font-size: 13px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--sheet); color: var(--ink); text-decoration: none; cursor: pointer; }
+.vbar .primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.vhint { margin: 0; padding: 8px 14px; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line); }
+.vbody { height: calc(100% - 100px); }
+.vbody iframe { width: 100%; height: 100%; border: 0; background: #e9ecf1; }
+.vbody pre { margin: 0; padding: 14px; height: 100%; overflow: auto; font-size: 12px; background: var(--paper); }
+.calc { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; }
+.calc h3 { margin: 0; font-size: 17px; }
+.calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.calc label { display: grid; gap: 3px; font-size: 13px; color: var(--muted); }
+.calc input, .calc select {
+  font: inherit; font-size: 15px; padding: 8px 10px; border: 1.5px solid var(--line); border-radius: 8px;
+  background: var(--paper); color: var(--ink); min-width: 0; width: 100%; font-variant-numeric: tabular-nums;
+}
+.calc input:focus, .calc select:focus { border-color: var(--pen); outline: none; }
+.result { border-top: 1px solid var(--line); padding-top: 10px; display: grid; gap: 2px; }
+.result .amt { font-family: var(--font-display); font-size: 32px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.result .why { font-size: 13px; color: var(--muted); }
+
+.searchbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+.searchbar input[type="search"] {
+  flex: 1 1 260px; min-width: 0; font: inherit; padding: 11px 14px;
+  border: 1.5px solid var(--line); border-radius: 10px; background: var(--sheet); color: var(--ink);
+}
+.searchbar input[type="search"]:focus { border-color: var(--pen); outline: none; }
+
+.layout { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 28px; align-items: start; }
+nav.tabs { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); display: grid; gap: 2px; }
+nav.tabs a {
+  display: flex; justify-content: space-between; gap: 8px; text-decoration: none; color: var(--ink);
+  padding: 9px 12px; border-radius: 8px; border-left: 3px solid transparent;
+}
+nav.tabs a:hover { background: var(--pen-soft); }
+nav.tabs a[aria-current="true"] { background: var(--sheet); border-left-color: var(--pen); font-weight: 600; box-shadow: 0 1px 0 var(--line); }
+nav.tabs .n { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; font-weight: 400; }
+
+main { min-width: 0; display: grid; gap: 34px; }
+section.group h2 { font-family: var(--font-display); font-weight: 400; font-size: 24px; margin: 0 0 4px; line-height: 1.2; }
+section.group > p { margin: 0 0 14px; color: var(--muted); font-size: 14px; max-width: 70ch; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.card {
+  background: var(--sheet); border: 1px solid var(--line); border-radius: 12px;
+  padding: 14px 16px; display: grid; grid-template-rows: auto 1fr auto; gap: 8px; min-width: 0;
+}
+.card .head { display: flex; justify-content: space-between; gap: 8px; align-items: start; }
+.card h3 { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.35; }
+.card h3 a { color: var(--ink); text-decoration: none; }
+.card h3 a:hover { color: var(--pen); text-decoration: underline; }
+.card .org { font-size: 12px; color: var(--muted); }
+.card .desc { margin: 0; font-size: 14px; }
+.card .save { margin: 0; font-size: 13px; color: var(--free); }
+.card .foot { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.price { font-size: 12px; padding: 2px 8px; border-radius: 6px; font-weight: 500; }
+.price.free { background: var(--free-soft); color: var(--free); }
+.price.cond { background: var(--cond-soft); color: var(--cond); }
+.star { font: inherit; background: none; border: none; cursor: pointer; padding: 2px 4px; line-height: 1; color: var(--muted); font-size: 18px; flex: none; }
+.star[aria-pressed="true"] { color: #e0a100; }
+.empty { padding: 28px; text-align: center; color: var(--muted); background: var(--sheet); border: 1px dashed var(--line); border-radius: 12px; }
+
+.notice { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; font-size: 14px; color: var(--muted); }
+.notice strong { color: var(--ink); }
+.notice ul { margin: 6px 0 0; padding-left: 18px; }
+footer { margin-top: 40px; font-size: 13px; color: var(--muted); }
+
+@media (max-width: 860px) { .tools { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 760px) {
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  nav.tabs { position: static; display: flex; overflow-x: auto; gap: 6px; padding-bottom: 4px; }
+  nav.tabs a { flex: none; border-left: none; border-bottom: 3px solid transparent; border-radius: 8px 8px 0 0; }
+  nav.tabs a[aria-current="true"] { border-bottom-color: var(--pen); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card, .form { transition: border-color .15s; }
+  .card:hover { border-color: var(--pen); }
+}
+/* 사설 모의고사 무료배포 */
+.mock { margin-bottom: 36px; }
+.mchips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.mchips button { font: inherit; font-size: 13px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--sheet); color: var(--ink); cursor: pointer; }
+.mchips button[aria-pressed="true"] { background: var(--pen); border-color: var(--pen); color: var(--sheet); }
+.mlist { list-style: none; margin: 0; padding: 0; background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; }
+.mlist li { display: grid; grid-template-columns: 88px 52px minmax(0, 1fr) auto; gap: 10px; align-items: baseline; padding: 9px 14px; border-top: 1px solid var(--line); font-size: 14px; }
+.mlist li:first-child { border-top: none; }
+.mlist time, .mlist .by { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.mlist .sj { font-size: 11px; text-align: center; padding: 2px 0; border-radius: 6px; background: var(--pen-soft); color: var(--pen); }
+.mlist a { color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+.mlist a:hover { color: var(--pen); text-decoration: underline; }
+.mmore { font: inherit; font-size: 13px; margin-top: 8px; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--sheet); color: var(--ink); cursor: pointer; }
+.mnote { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+@media (max-width: 640px) {
+  .mlist li { grid-template-columns: 52px minmax(0, 1fr); row-gap: 2px; }
+  .mlist time { grid-column: 1 / -1; order: -1; }
+  .mlist .by { grid-column: 2; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>무료<span class="hl">아카데미</span>월드</h1>
+      <span class="count" id="count"></span>
+    </div>
+    <p class="lede">학원을 열거나 운영하는 원장님이 돈 안 들이고 쓸 수 있는 것만 모았습니다. 바로 인쇄하는 운영 양식, 무료 학원 관리 프로그램, 교육청·세무·노무 처리, 지원금, 홍보 채널, 수업 준비 도구까지 한곳에서 찾으세요.</p>
+  </header>
+
+  <h2 class="sec">바로 쓰는 양식</h2>
+  <p class="secp">여기서 만든 양식이라 회원가입 없이 바로 열어 입력하고 인쇄하면 됩니다. 법정 게시물인 반환기준표는 학원법 시행령 원문 그대로입니다.</p>
+  <div class="tools">
+    <div class="forms" id="forms"></div>
+    <form class="calc" id="calc" aria-labelledby="calc-title">
+      <h3 id="calc-title">교습비 환불 계산기</h3>
+      <div class="row">
+        <label>이번 달 교습비 (원)<input id="c-fee" type="number" inputmode="numeric" min="0" step="1000" value="300000"></label>
+        <label>교습기간
+          <select id="c-months">
+            <option value="1">1개월 이내</option><option value="2">2개월</option><option value="3">3개월</option>
+            <option value="4">4개월</option><option value="6">6개월</option>
+          </select>
+        </label>
+      </div>
+      <div class="row">
+        <label>이번 달 총 수업 (회 또는 분)<input id="c-total" type="number" inputmode="numeric" min="1" value="12"></label>
+        <label>그만둔 날까지 한 수업<input id="c-done" type="number" inputmode="numeric" min="0" value="3"></label>
+      </div>
+      <label id="c-left-wrap" hidden>그만둔 달 이후 남은 개월 수<input id="c-left" type="number" inputmode="numeric" min="0" value="0"></label>
+      <div class="result" aria-live="polite">
+        <span class="why">돌려줄 금액</span>
+        <span class="amt" id="c-amt">0원</span>
+        <span class="why" id="c-why"></span>
+      </div>
+      <span class="why" style="font-size:12px;color:var(--muted)">학원법 시행령 [별표 4] 기준. 학습자 본인 의사로 그만둔 경우이며, 5일 이내 반환해야 합니다.</span>
+    </form>
+  </div>
+
+  <section class="mock" aria-labelledby="mock-title">
+    <h2 class="sec" id="mock-title">사설 모의고사 무료배포 새 글</h2>
+    <p class="secp">오르비에 올라오는 사설 모의고사·N제 무료배포 글을 매주 월요일 자동으로 모읍니다. 제목을 누르면 제작자 글로 가서 문제지와 해설을 받습니다. <span id="mock-upd"></span></p>
+    <div class="mchips" id="mock-chips" role="group" aria-label="과목"></div>
+    <ul class="mlist" id="mock-list"></ul>
+    <button type="button" class="mmore" id="mock-more" hidden>더 보기</button>
+    <p class="mnote">파일은 이 사이트에 올리지 않습니다. 제작자 대부분이 "학원·학교 수업 사용 가능, 재배포 금지"로 배포하기 때문이에요. 학원 인쇄가 되는지는 글마다 적힌 조건을 확인하세요.</p>
+  </section>
+
+  <dialog class="viewer" id="viewer" aria-labelledby="v-title">
+    <div class="vbar">
+      <b id="v-title"></b>
+      <button type="button" class="primary" id="v-print">인쇄 / PDF</button>
+      <button type="button" id="v-copy" hidden>내용 복사</button>
+      <a id="v-open" target="_blank" rel="noopener">공개 사이트에서 열기</a>
+      <button type="button" id="v-close">닫기</button>
+    </div>
+    <p class="vhint" id="v-hint"></p>
+    <div class="vbody" id="v-body"></div>
+  </dialog>
+
+  <div class="searchbar">
+    <input type="search" id="q" placeholder="검색: 출결, 문자비, 강사 채용, 지원금, 홍보, 세금 …" aria-label="자료 검색">
+  </div>
+
+  <div class="layout">
+    <nav class="tabs" id="tabs" aria-label="분류"></nav>
+    <main id="list"></main>
+  </div>
+
+  <footer>
+    <div class="notice">
+      <strong>저작권과 이용 안내</strong>
+      <ul>
+        <li>평가원·교육청 기출 파일은 이 사이트에 올리지 않고 공식 페이지로만 연결합니다. 2024년 대법원 판결(2021다272001)에서 지문 저작물이 들어간 기출문제를 허락 없이 인터넷에 계속 올려 두는 것을 저작권 침해로 봤기 때문입니다.</li>
+        <li>바로 쓰는 양식은 이 사이트에서 직접 만든 것이라 자유롭게 고쳐 쓰고 인쇄해도 됩니다. 반환기준표는 법령 원문이며 법령은 저작권 보호 대상이 아닙니다(저작권법 제7조).</li>
+        <li>"기본 무료"로 표시한 서비스는 핵심 기능이 무료이고 문자 발송비나 일부 기능은 유료입니다. 무료 범위는 바뀔 수 있으니 쓰기 전에 확인하세요.</li>
+        <li>지원금은 해마다 공고와 예산이 바뀝니다. 신청 전에 소상공인24나 기업마당 공고 원문을 확인하세요.</li>
+      </ul>
+    </div>
+    <p>별(☆)을 누르면 이 브라우저에 즐겨찾기로 저장됩니다. 2026년 11월 기준으로 정리했습니다.</p>
+  </footer>
+</div>
+
+<script>
+const FORMS = [
+  ["refund-standard.html", "교습비등 반환기준 게시표", "법정 게시물. 안 붙이면 과태료", "게시 의무"],
+  ["tuition-board.html", "교습비등 게시표", "과정·과목별 교습비와 기타경비", "게시 의무"],
+  ["teacher-board.html", "강사 게시표", "강사 이름·과목·학력", "게시 의무"],
+  ["enroll-form.html", "원생 등록·상담 카드", "학교 시험·레벨 테스트 점수, 특이사항", "등록"],
+  ["teacher-contract.html", "강사 계약서 (근로·프리랜서)", "표준근로계약서 항목 기준, 3.3% 위촉계약", "인사"],
+  ["dismissal-notice.html", "해고 통지서", "사유·시기 서면 통지, 해고예고 확인", "인사"],
+  ["severance-statement.html", "퇴직금 정산 확인서", "지급일·금액, 원장·강사 서명", "인사"],
+  ["enrollment-certificate.html", "재원 및 교육비 납입 증명서", "학부모 회사 제출용, 월별 납입액", "학부모"],
+  ["hiring-checklist.html", "강사 채용 체크리스트", "범죄경력 조회, 15일 내 신고", "인사"],
+  ["yearly-calendar.html", "원장 연간 행정·세무 일정", "2월 사업장현황신고 등", "일정"]
+];
+
+const GROUPS = [
+  { id: "erp", name: "무료 학원 관리 프로그램", desc: "출결, 등하원 알림, 수납, 학부모 앱. 월 2~3만원 하는 관리 프로그램 대신 쓸 수 있습니다. 대부분 프로그램은 무료이고 알림톡·문자 발송비만 냅니다." },
+  { id: "admin", name: "교육청·법정 의무", desc: "강사 등록, 범죄경력 조회, 의무 교육. 돈 들이지 않고 처리할 수 있고, 빠뜨리면 과태료가 나오는 것들입니다." },
+  { id: "tax", name: "세무·회계", desc: "학원은 부가가치세 면세사업자입니다. 세무사 없이도 직접 할 수 있는 신고와 무료 상담 창구입니다." },
+  { id: "labor", name: "인사·노무", desc: "강사·직원을 뽑고, 계약하고, 4대보험 부담을 줄이는 무료 수단입니다." },
+  { id: "fund", name: "지원금·무료 컨설팅", desc: "소상공인인 학원이 받을 수 있는 보험료 지원, 정책자금, 무료 상담과 상권 분석입니다." },
+  { id: "class", name: "수업 도구", desc: "강사가 수업 화면과 퀴즈, 단어 시험을 만들 때 쓰는 무료 도구입니다." },
+  { id: "elem", name: "초등 기출·문제지", desc: "초등 단원평가, 진단평가 기출, 연산 학습지를 PDF로 바로 받거나 만들어 인쇄하는 곳입니다." },
+  { id: "midexam", name: "중학 기출·문제지", desc: "중학교 중간·기말 기출, 학업성취도평가, 영어듣기평가 문제를 무료로 받는 곳입니다. 학교별 시험 범위와 평가 비율은 학교알리미에서 확인합니다." },
+  { id: "highexam", name: "고등 기출·문제지", desc: "수능, 모의평가, 학력평가, 검정고시 기출과 무료 배포 모의고사를 문제지·정답 그대로 받는 곳입니다." },
+  { id: "bank", name: "학원용 무료 문제은행·출판사 자료실", desc: "원장·강사 인증만 하면 문제은행, 시험지 출제 마법사, 교재 PDF와 평가자료를 무료로 쓰는 곳입니다. 체험 기간만 무료인 유료 문제은행은 넣지 않았습니다." },
+  { id: "nonsul", name: "약술형 논술", desc: "2027학년도 약술형 논술 대학들이 입학처에 무료로 올린 논술가이드북·기출·모의논술입니다. 대부분 문제와 해설, 채점 기준까지 들어 있습니다." },
+];
+
+// [분류, 이름, 운영, 주소, 무엇을 할 수 있나, 아끼는 것, 무료범위(free=완전 무료, plan=기본 무료)]
+const R = [
+  ["erp","온하이","온하이","https://www.on-hi.com","원생 수 제한 없이 출결 키패드, 자동 청구, 학부모 앱, 강사 권한 관리를 모두 무료로 씁니다. 안 쓰는 태블릿을 출결기로 쓸 수 있습니다.","관리 프로그램 월 이용료, 출결 단말기 구입비","plan"],
+  ["erp","통통통 basic","대교에듀베이션","https://www.tongtongtong.co.kr/main","원생 등록 무제한, 출결·수납·상담·메시지 기본 기능 무료. 원장·강사·학부모 앱 무료 제공, 엑셀로 원생 일괄 등록.","관리 프로그램 월 이용료 (메시지 건당 17원~)","plan"],
+  ["erp","런즈 티처스","런즈","https://learns.partners/","원생·반·출결·직원 관리와 미납 자동 관리가 무료. 학부모가 런즈 앱을 쓰면 알림이 무료로 갑니다.","문자·알림톡 비용 (앱 푸시 무료)","plan"],
+  ["erp","랠리즈 basic","랠리즈","https://www.rallyz.co.kr","무료 플랜으로 출결, 수납, 공지, 자료실을 쓸 수 있습니다. 학부모 앱 설치가 필요합니다.","관리 프로그램 월 이용료","plan"],
+  ["erp","T학원","거북에듀텍","https://hakwonadmin-front.web.app/promo","중·고등 학원용. 학생·시간표·출결·수납·성적·상담 무료. 학부모는 앱 설치 없이 문자 링크로 확인합니다.","관리 프로그램 월 이용료, 결석 학생만 문자 보내 문자비 절감","plan"],
+
+  ["admin","나이스 학원민원서비스","교육부·시도교육청","https://hakwon.neis.go.kr","강사 채용·해임, 배상책임보험·면허세 납부 등록, 휴·폐원 신고를 교육청 방문 없이 온라인으로 합니다.","교육청 방문 시간, 대행 수수료","free"],
+  ["admin","범죄경력회보서 발급시스템","경찰청","https://crims.police.go.kr","강사 채용 전 필수인 성범죄경력·아동학대 범죄전력 조회를 온라인으로 신청합니다.","미조회 과태료 (성범죄 300만원, 아동학대 250만원)","free"],
+  ["admin","아동학대 신고의무자 교육","아동권리보장원","https://edu.ncrc.or.kr","원장·강사·직원 모두 매년 1시간 이상 받아야 하는 법정 의무교육을 무료 온라인으로 이수합니다.","유료 집합교육비, 미실시 과태료 (최대 300만원)","free"],
+  ["admin","경기도 평생학습포털 GSEEK","경기도","https://www.gseek.kr","아동학대·장애인학대 신고의무자 교육 등 법정 교육을 무료 온라인으로 들을 수 있습니다. 전국 누구나 이용.","유료 교육비","free"],
+
+  ["tax","현금영수증 의무발행 안내","국세청","https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=7796","학원은 의무발행업종입니다. 현금 10만원 이상을 받으면 요청이 없어도 발급해야 하며, 손님 정보를 모르면 010-000-1234로 자진발급합니다.","미발급 가산세 (금액의 20%)","free"],
+  ["tax","위택스","행정안전부","https://www.wetax.go.kr","학원 등록면허세(면허분, 매년 1월)와 지방세를 온라인으로 납부합니다.","구청 방문 시간","free"],
+  ["tax","국세상담센터 126","국세청","https://call.nts.go.kr","전화(국번 없이 126)와 인터넷으로 세금 질문을 무료로 상담합니다.","세무 상담비","free"],
+
+  ["labor","표준근로계약서 (2025 개정)","고용노동부","https://www.moel.go.kr/policy/policydata/view.do?bbs_seq=20250300356","정규직·단시간·연소근로자용 표준 근로계약서와 표준 취업규칙 한글 파일을 내려받습니다.","계약서 작성 대행비, 미작성 벌금 (500만원 이하)","free"],
+  ["labor","두루누리 사회보험료 지원","고용노동부·근로복지공단","https://www.insurancesupport.or.kr","근로자 10명 미만 학원이 월 보수 270만원 미만 신규 근로자를 쓰면 고용보험·국민연금 보험료의 80%를 최대 36개월 지원합니다.","사업주 4대보험 부담 (1인당 월 최대 약 10만원)","free"],
+  ["labor","고용24","고용노동부","https://www.work24.go.kr","강사·직원 구인 공고를 무료로 올리고, 고용지원금과 전자근로계약서를 확인합니다.","유료 구인광고비","free"],
+  ["labor","최저임금위원회","최저임금위원회","https://www.minimumwage.go.kr","올해·내년 최저임금과 월 환산액을 확인합니다. 조교·사무직원 급여 정할 때 기준입니다.","임금 분쟁 비용","free"],
+  ["labor","소상공인 무료 법률·세무·노무 상담","소상공인연합회","https://www.kfme.or.kr/kr/board/notice.php?bgu=view&cate=1&idx=5141","근로계약, 퇴직금, 임대차 분쟁, 세무 신고를 전문가에게 전화·서면으로 무료 상담합니다. 예산 소진 시 마감.","노무사·세무사·변호사 상담비","free"],
+
+  ["fund","소상공인24","소상공인시장진흥공단","https://www.sbiz24.kr","중소벤처기업부와 지자체의 소상공인 지원사업을 조회하고 신청합니다. 지자체 사회보험료 추가 지원도 여기서 신청합니다.","지원금 정보 유료 서비스 이용료","free"],
+  ["fund","기업마당","중소벤처기업부","https://www.bizinfo.go.kr","정부·지자체 지원사업 공고를 한곳에서 검색합니다. '소상공인', '교육서비스'로 찾아보세요.","지원금 정보 유료 서비스 이용료","free"],
+  ["fund","소상공인 고용보험료 지원","소상공인시장진흥공단","https://go.sbiz.or.kr","원장 본인이 자영업자 고용보험에 가입하면 보험료의 50~80%를 최대 5년 돌려받습니다. 폐업 시 실업급여 안전망이 생깁니다.","원장 고용보험료","free"],
+  ["fund","소상공인 정책자금","소상공인시장진흥공단","https://ols.semas.or.kr","학원·교습소도 소상공인 요건에 맞으면 저금리 정책자금 융자를 신청할 수 있습니다. 교육서비스업은 융자 제외 업종이 아닙니다.","대출 이자","free"],
+  ["fund","소상공인365 상권분석","소상공인시장진흥공단","https://bigdata.sbiz.or.kr","개원 예정지의 유동인구, 업종 현황, 매출 정보를 빅데이터로 분석합니다. 입지 고를 때 씁니다.","유료 상권분석 보고서 비용","free"],
+  ["fund","찾아가는 1:1 경영 컨설팅","소상공인시장진흥공단","https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000123795","경영·마케팅 전문가가 학원을 찾아와 최대 5회 무료 컨설팅합니다. 해마다 공고가 나옵니다.","유료 컨설팅비","free"],
+
+
+
+  ["highexam","수능·모의평가 기출","한국교육과정평가원","https://www.suneung.re.kr","역대 수능과 6·9월 모의평가 문제지, 정답, 듣기 파일을 공식 제공합니다.","기출 자료집 구입비","free"],
+  ["highexam","EBSi 기출문제","EBS","https://www.ebsi.co.kr","수능, 모의평가, 교육청 학력평가(고1~3) 기출과 정답을 내려받습니다.","기출 자료집 구입비","free"],
+  ["highexam","한국사능력검정시험 기출","국사편찬위원회","https://www.historyexam.go.kr","회차별 기출문제와 정답을 공식 공개합니다.","문제집 구입비","free"],
+  ["highexam","오르비 (사설 배포 모의고사)","오르비","https://orbi.kr","제작자들이 N제·모의고사 무료 배포판을 올립니다. 학원 인쇄 허용 여부는 게시글마다 확인하세요.","사설 모의고사 구입비","free"],
+  ["class","GeoGebra","GeoGebra","https://www.geogebra.org","함수 그래프, 도형, 3D 시각화. 수학 수업 화면 자료를 바로 만듭니다.","수학 소프트웨어 비용","free"],
+  ["class","Desmos 그래핑 계산기","Desmos","https://www.desmos.com/calculator?lang=ko","슬라이더로 매개변수를 바꿔 가며 그래프를 보여 줍니다.","공학용 계산기·소프트웨어 비용","free"],
+  ["class","PhET 시뮬레이션","University of Colorado Boulder","https://phet.colorado.edu/ko/","물리·화학·생명·지구과학 시뮬레이션을 한국어로 씁니다.","실험 기자재 비용","free"],
+  ["class","클래스카드","클래스카드","https://www.classcard.net","교과서·수능 단어 세트로 반별 단어 시험. 기본 기능 무료.","단어 시험지 제작 시간","plan"],
+  ["midexam","내신코치 무료기출문제","내신코치","https://www.nscoach.com/free_download","전국 중·고등학교 학교별 중간·기말 기출 시험지와 정답을 무료로 받습니다. 무료 회원가입이 필요하고 하루 다운로드 수 제한이 있습니다.","기출 시험지 구입비","free"],
+  ["midexam","EBS 중학 시험대비 기출족보","EBS","https://mid.ebs.co.kr/premium/product/list?clsfnSystId=48005271","현직 중학교 교사가 고른 국어·영어·수학·사회·과학 중간·기말 기출을 모의고사형과 서술형으로 줍니다. 국어·영어는 출판사별. 중학프리미엄 프리패스(무료) 신청 후 이용.","내신 대비 문제집 구입비","free"],
+  ["midexam","족보닷컴 미리보는 중간·기말고사","족보닷컴","https://www.zocbo.com/","시험 시즌마다 국어·영어·수학·사회·과학 예상문제와 정답·해설을 회원에게 무료로 풉니다. 학교별 기출 열람은 유료.","예상문제 제작 시간","plan"],
+  ["midexam","학교알리미 교과별 평가계획","교육부","https://www.schoolinfo.go.kr","학교를 검색해 공시 항목 '교과별(학년별) 평가계획'을 열면 과목별 지필·수행 비율과 평가 시기가 나옵니다. 학교별 내신 대비반 짤 때 씁니다.","학교별 정보 수집 시간","free"],
+  ["elem","MathForAll","MathForAll","https://mathforall.kr","초1~6 수학 학습지와 단원평가를 회원가입 없이 PDF로 받습니다. 학원 수업 사용을 명시적으로 허용합니다(CC BY-ND).","초등 수학 문제집 구입비","free"],
+  ["elem","수학의 신호 단원평가","수학의 신호","https://mathsignal.co.kr/unittest","초1~6 수학 71개 단원 단원평가지를 로그인 없이 받습니다. 같은 사이트에서 중1~3 단원·연산 학습지와 국어·영어·사회·과학 20문항 시험지도 만듭니다.","단원평가 문제집 구입비","free"],
+  ["elem","exam.how 초등 수학 문제은행","exam.how","https://exam.how","초1~고3 전과목 12,000여 문제를 학년·과목·난이도별로 골라 시험지를 만들고 PDF로 출력합니다. 회원가입 없이 무료.","시험지 제작 시간","free"],
+  ["elem","에듀넷 학습·평가자료 / 짜잔수학","한국교육학술정보원","https://www.edunet.net","학습자료 > 학습·평가자료 > 초등학교에서 과목별 단원 정리와 단원평가 PDF를 받습니다. 짜잔수학은 초3~6 단원·난이도별 문항을 만들어 PDF로 줍니다.","초등 전과목 문제집 구입비","free"],
+  ["elem","EBS 초등 단추+ AI 시험지","EBS","https://primary.ebs.co.kr","진단평가를 보고 나면 AI가 학생 수준에 맞는 문제지를 만들어 PDF로 인쇄할 수 있습니다. EBS 무료 회원가입 필요.","수준별 문제지 제작 시간","free"],
+  ["elem","EBS 기초학력 진단평가","EBS","https://primary.ebs.co.kr/course/series/list?seriesId=S00127","학년 초 기초학력 진단평가 대비 문제와 해설 강의.","진단평가 문제집 구입비","free"],
+  ["elem","평가원 초3 진단평가·학업성취도 기출","한국교육과정평가원","https://www.kice.re.kr/sub/info.do?m=0303&s=kice","초3 국가수준 기초학력 진단평가 기출을 문제지·정답 그대로 받습니다. 같은 페이지에 학업성취도평가와 검정고시 기출 바로가기가 있습니다.","기출 자료집 구입비","free"],
+  ["elem","일일수학","일일수학","https://www.11math.com","초1~6 연산 문제지를 로그인 없이 단원·유형별로 무한 출력합니다. 정답은 문제지 번호나 QR로 확인.","연산 학습지 구입비","free"],
+  ["elem","AI 매일수학","아이스크림에듀","https://dmath.i-scream.co.kr","초1~6 학년·단원·유형을 고르고 8~20문항으로 연산지를 만들어 PDF로 받습니다. 기본 출력은 로그인 없이 됩니다.","연산 학습지 구입비","free"],
+  ["elem","학습지제작소","학습지제작소","https://calcproject.tistory.com","초등 수학·국어 개념정리와 연습문제, 정답지 PDF. 수업·과외 부교재 사용은 허용, 재배포는 금지입니다.","개념 학습지 제작 시간","free"],
+  ["elem","EBSMath 수학문제","EBS","https://www.ebsmath.co.kr","학습존 > 수학문제에서 초3~고등 단원별 기본·실력 문제지를 골라 로그인 없이 인쇄합니다. 해설보기로 풀이 확인.","수학 문제집 구입비","free"],
+  ["midexam","국가수준 학업성취도평가 기출","한국교육과정평가원","https://www.kice.re.kr/boardCnts/list.do?boardID=1500208&m=030302&s=kice","중3·고2 국어·수학·영어·사회·과학 문제지, 정답, 문항정보, 영어 듣기 대본과 MP3를 연도별로 받습니다.","기출 자료집 구입비","free"],
+  ["midexam","중학 영어듣기능력평가 기출","광주창의융합교육원","https://gice.gen.go.kr/board.es?act=view&bid=0024&list_no=17391&mid=a10502010000&tag","시·도교육청 공동 중학 영어듣기평가 문제지, 정답, 대본, 음원.","듣기평가 문제집 구입비","free"],
+  ["midexam","EBS 중학 영어듣기평가","EBS","https://mid.ebs.co.kr/english","학년별 영어듣기능력평가 기출을 문제와 음원으로 풉니다.","듣기평가 문제집 구입비","free"],
+  ["highexam","초졸·중졸·고졸 검정고시 기출","한국교육과정평가원","https://www.kice.re.kr/boardCnts/list.do?boardID=1500211&m=030305&s=kice","2000~2026년 검정고시 과목별 문제지와 정답 PDF 622건. 초등·중학 기초 실력 점검용으로도 씁니다.","기출 자료집 구입비","free"],
+  ["bank","캐츠(CATS)","단비교육","https://teach.cats4me.net/","학원·선생님은 평생 무료. 초등 전과목 교과서별 문제와 단원·중간·기말 예상문제, 중등 영어·수학 문제를 골라 출력하거나 온라인 과제로 보냅니다. 2025년부터 중등 학교별 족보와 고등 수학은 빠졌고 출력 횟수는 등급별 제한.","문제은행 구독료","plan"],
+  ["bank","천재교육 ACA","천재교육","https://aca.chunjae.co.kr/main/main.aspx","학원 선생님 인증 후 승인되면 모든 자료가 무료. 해결의 법칙·수학리더·체크체크 등 교재 PDF, 출제 마법사, 쌍둥이 문제·단원 테스트, 초등 결손단원 자료 1만여 건.","평가지 제작 시간, 교사용 교재비","free"],
+  ["bank","비상교재 학원선생님 자료실","비상교육","https://book.visang.com/main/teacher","초·중·고 비상 참고서(개념+유형, 한끝, 오투, 완자)의 문제자료, 평가자료, 강의자료, 정답, 듣기 파일과 영단어 출제 마법사. 수업 목적 사용만 허용.","평가지 제작 시간, 교사용 교재비","free"],
+  ["bank","좋은책신사고 참고서 선생님 자료실","좋은책신사고","https://teacher.sinsago.co.kr/main/main.aspx","쎈·라이트쎈·우공비 등 신사고 참고서 수업 자료를 학원 선생님도 인증 후 받습니다(교과서 자료실은 학교 교사 전용).","교사용 교재비","free"],
+  ["bank","미래엔 참고서 선생님 자료실","미래엔","https://eduteacher.mirae-n.com","선생님 인증 회원은 교사용 수업 교재를 연 2회 최대 4권 무료 배송. 미래엔 참고서 채택을 인증하면 교재 PDF도 신청할 수 있습니다.","교사용 교재비","free"],
+  ["bank","NE Books 학습자료실","NE능률","https://www.nebooks.co.kr","능률 영어·수학·국어 교재의 정답·해설, MP3, 부가 워크시트를 무료로 받습니다. EBS 변형문제집 해답도 있습니다.","영어 부교재 자료 구입비","free"],
+  ["bank","YBM 북샘","YBM","https://www.ybmbooksam.com","YBM 참고서 교재 자료실과 어휘 출제 마법사, 문법 예문 뱅크.","단어 시험지 제작 시간","free"],
+  ["bank","내공스터디 영어 변형문제","내공스터디","https://www.tabstudy.co.kr","모의고사·수능 부교재·교과서 지문으로 영어 내신 변형문제를 만들어 종이 시험지로 뽑습니다. 무료 체험 후 기능별 유료.","영어 변형문제 제작 시간","plan"],
+  ["bank","매쓰피드백","매쓰피드백","https://mathfeedback.co.kr","학년·단원·난이도를 고르면 중·고등 수학 시험지를 자동으로 만듭니다. 무료 플랜은 AI 시험지 월 3회, 문제은행 열람, 학생 5명 관리.","수학 시험지 제작 시간","plan"],
+  ["bank","paperee","paperee","https://www.paperee.co.kr","내 문항을 무제한 저장하는 나만의 문제은행과 시험지 구성, OMR 자동 채점이 무료(광고 표시). 뚝딱 연산시험지·단어시험지는 가입 없이 바로 인쇄.","시험지 편집·채점 프로그램 비용","free"],
+  ["nonsul","가천대 2027 모의논술 문제·해설","가천대학교 입학처","https://admission.gachon.ac.kr/admission/html/counsel/noticeView.asp?BOARD_IDX=32292&s_cate=BBS0401","인문·자연 모의논술 A형·B형 PDF(국어 4, 수학 4문항)와 해설. 2026 기출과 해설은 논술가이드북 PDF에 있습니다.","논술 교재·모의고사 구입비","free"],
+  ["nonsul","국민대 논술가이드북","국민대학교 입학처","https://admission.kookmin.ac.kr/helper/notice.php?ctype=view&no=1065","2026 논술 결과, 계열별 출제기준, 기출문제를 담은 가이드북 PDF. 메뉴의 기출문제 자료실도 함께 보세요.","논술 교재·모의고사 구입비","free"],
+  ["nonsul","삼육대 수시 기출문제","삼육대학교 입학처","https://ipsi.syu.ac.kr/2016_syu/pages/index.asp?p=11&b=B_1_3&cate=%EC%88%98%EC%8B%9C","수시모집 메뉴 맨 끝 기출문제 칸. 2026 기출·해설·채점 기준은 같은 메뉴 첫 칸 논술가이드북 PDF에도 있습니다.","논술 교재·모의고사 구입비","free"],
+  ["nonsul","수원대 논술고사 가이드북","수원대학교 입학처","https://ipsi.suwon.ac.kr/board/notice/read/5666","2027 모의문제와 해설이 포함된 가이드북 PDF.","논술 교재·모의고사 구입비","free"],
+  ["nonsul","강남대 2027 모의논술 문제·해설","강남대학교 입학처","https://admission.kangnam.ac.kr/doumi/notice.htm?bbsid=notice&bltn_seq=39581&mode=view","모의논술 문제지(해설·예시답안 포함) PDF와 2027 논술가이드북 PDF를 한 게시물에서 받습니다.","논술 교재·모의고사 구입비","free"],
+  ["nonsul","동덕여대 논술가이드북","동덕여자대학교 입학처","https://ipsi.dongduk.ac.kr/ipsi/contents/nontime-doc.do?etc1=78&id=91947&page=1&schBdcode=_ipsi_admdoc01&schGroupCode&schM=view&viewCount=10","2027부터 약술형으로 바뀐 동덕여대의 예시 문제와 해설.","논술 교재·모의고사 구입비","free"],
+  ["nonsul","서경대 논술가이드북 (2027·2026)","서경대학교 입학처","https://go.skuniv.ac.kr/index.php?category=182&mid=notice&search_keyword=%EB%85%BC%EC%88%A0&search_target=title_content","논술 게시물만 걸러 둔 목록. 2027·2026 논술가이드북에 기출·예시 문제와 해설이 있습니다.","논술 교재·모의고사 구입비","free"],
+  ["nonsul","상명대 기출문제","상명대학교 입학처","https://admission.smu.ac.kr/_seoul/board/bbs.html?bbsid=seoul_gichul&ctg_cd=","서울캠퍼스 기출문제 게시판에서 연도별 논술 기출 PDF를 바로 받습니다.","논술 교재·모의고사 구입비","free"],
+  ["nonsul","을지대 논술 기출·모의고사 문항","을지대학교 입학관리처","https://admission.eulji.ac.kr/?menuno=8005","통합 자료실 맨 위에 2027 대비 기출문항 공개, 모의고사 문항공개 게시물이 있고 2025·2026 것도 있습니다.","논술 교재·모의고사 구입비","free"],
+
+];
+
+const PRICE = { free: ["완전 무료", "free"], plan: ["기본 무료", "cond"] };
+const items = R.map(([g, name, org, url, desc, save, price], i) => ({ id: i, g, name, org, url, desc, save, price }));
+const state = { tab: "all", q: "", stars: new Set() };
+try { JSON.parse(localStorage.getItem("faw-stars") || "[]").forEach(u => state.stars.add(u)); } catch (e) {}
+function saveStars() { try { localStorage.setItem("faw-stars", JSON.stringify([...state.stars])); } catch (e) {} }
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+const SITE = "https://newclear2222-idea.github.io/Free-Academy/";
+$("#forms").innerHTML = FORMS.map(([f, name, sub, tag]) =>
+  `<button type="button" class="form" data-form="${esc(f)}" data-name="${esc(name)}"><em>${esc(tag)}</em><b>${esc(name)}</b><span>${esc(sub)}</span></button>`).join("");
+
+// 양식은 새 창 대신 페이지 안 창에서 연다 (미리보기 환경은 새 창·다운로드를 막음)
+const viewer = $("#viewer");
+let csvText = "";
+async function openForm(f, name) {
+  $("#v-title").textContent = name;
+  $("#v-open").href = SITE + "templates/" + f;
+  const isCsv = f.endsWith(".csv");
+  $("#v-print").hidden = isCsv;
+  $("#v-copy").hidden = !isCsv;
+  $("#v-hint").textContent = isCsv
+    ? "[내용 복사]를 누른 뒤 엑셀이나 구글 시트의 A1 칸에 붙여넣으세요. 공개 사이트에서는 파일로 바로 받을 수 있습니다."
+    : "칸을 눌러 바로 입력할 수 있습니다. 인쇄가 안 되면 [공개 사이트에서 열기]로 열어 인쇄하세요.";
+  $("#v-body").innerHTML = "";
+  if (typeof viewer.showModal === "function") viewer.showModal(); else viewer.setAttribute("open", "");
+  try {
+    const res = await fetch("templates/" + f);
+    if (!res.ok) throw new Error(res.status);
+    const text = (await res.text()).replace(/^\uFEFF/, "");
+    if (isCsv) {
+      csvText = text.replace(/,/g, "\t");
+      const pre = document.createElement("pre"); pre.textContent = text; $("#v-body").appendChild(pre);
+    } else {
+      const fr = document.createElement("iframe");
+      fr.title = name;
+      fr.srcdoc = text.replace("</head>", "<style>.bar{display:none!important}</style></head>");
+      $("#v-body").appendChild(fr);
+    }
+  } catch (e) {
+    $("#v-body").innerHTML = `<p class="vhint">양식을 불러오지 못했습니다. [공개 사이트에서 열기]를 눌러 주세요.</p>`;
+  }
+}
+$("#forms").addEventListener("click", e => {
+  const b = e.target.closest("[data-form]"); if (b) openForm(b.dataset.form, b.dataset.name);
+});
+$("#v-close").addEventListener("click", () => viewer.close ? viewer.close() : viewer.removeAttribute("open"));
+$("#v-print").addEventListener("click", () => {
+  const fr = $("#v-body iframe");
+  try { fr && fr.contentWindow.print(); } catch (e) {}
+});
+$("#v-copy").addEventListener("click", async () => {
+  const btn = $("#v-copy");
+  try { await navigator.clipboard.writeText(csvText); btn.textContent = "복사됨"; }
+  catch (e) {
+    const pre = $("#v-body pre"); if (pre) { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+    btn.textContent = "선택됨, Ctrl+C로 복사";
+  }
+  setTimeout(() => { btn.textContent = "내용 복사"; }, 2500);
+});
+
+function matches(it) {
+  if (!state.q) return true;
+  const hay = (it.name + " " + it.org + " " + it.desc + " " + it.save).toLowerCase();
+  return state.q.toLowerCase().split(/\s+/).every(w => hay.includes(w));
+}
+function inTab(it, t) { return t === "all" || (t === "stars" ? state.stars.has(it.url) : it.g === t); }
+
+function renderTabs() {
+  const tabs = [{ id: "all", name: "전체" }, { id: "stars", name: "즐겨찾기" }, ...GROUPS];
+  $("#tabs").innerHTML = tabs.map(t => {
+    const n = items.filter(it => inTab(it, t.id) && matches(it)).length;
+    return `<a href="#${t.id}" aria-current="${state.tab === t.id}">${esc(t.name)}<span class="n">${n}</span></a>`;
+  }).join("");
+}
+function card(it) {
+  const [plabel, pcls] = PRICE[it.price];
+  const on = state.stars.has(it.url);
+  return `<article class="card">
+    <div class="head">
+      <div><h3><a href="${esc(it.url)}" target="_blank" rel="noopener noreferrer">${esc(it.name)}</a></h3><div class="org">${esc(it.org)}</div></div>
+      <button type="button" class="star" data-star="${esc(it.url)}" aria-pressed="${on}" aria-label="${esc(it.name)} 즐겨찾기">${on ? "★" : "☆"}</button>
+    </div>
+    <div style="display:grid;gap:6px"><p class="desc">${esc(it.desc)}</p><p class="save">아끼는 것: ${esc(it.save)}</p></div>
+    <div class="foot"><span class="price ${pcls}">${plabel}</span></div>
+  </article>`;
+}
+function renderList() {
+  const groups = state.tab === "all" || state.tab === "stars" ? GROUPS : GROUPS.filter(g => g.id === state.tab);
+  let total = 0;
+  const html = groups.map(g => {
+    const list = items.filter(it => it.g === g.id && matches(it) && inTab(it, state.tab === "stars" ? "stars" : "all"));
+    total += list.length;
+    if (!list.length) return "";
+    return `<section class="group"><h2>${esc(g.name)}</h2><p>${esc(g.desc)}</p><div class="cards">${list.map(card).join("")}</div></section>`;
+  }).join("");
+  const emptyMsg = state.tab === "stars" && !state.stars.size
+    ? "아직 즐겨찾기가 없습니다. 자주 쓰는 자료의 ☆를 눌러 보세요."
+    : "검색어에 맞는 자료가 없습니다. 검색어를 줄여 보세요.";
+  $("#list").innerHTML = html || `<div class="empty">${emptyMsg}</div>`;
+  $("#count").textContent = `무료 자료 ${items.length}개 · 양식 ${FORMS.length}종`;
+}
+function render() { renderTabs(); renderList(); }
+function fromHash() {
+  const h = location.hash.slice(1);
+  state.tab = h === "stars" || GROUPS.some(g => g.id === h) ? h : "all";
+  render();
+}
+$("#q").addEventListener("input", e => { state.q = e.target.value.trim(); render(); });
+$("#list").addEventListener("click", e => {
+  const b = e.target.closest("[data-star]"); if (!b) return;
+  const u = b.dataset.star; state.stars.has(u) ? state.stars.delete(u) : state.stars.add(u);
+  saveStars(); render();
+});
+window.addEventListener("hashchange", fromHash);
+fromHash();
+
+// 환불 계산기 (학원법 시행령 별표 4, 학습자 본인 의사로 수강 포기)
+function refund(fee, total, done) {
+  if (done <= 0) return [fee, "수업 시작 전: 전액 반환"];
+  const r = done / total;
+  if (r < 1 / 3) return [Math.floor(fee * 2 / 3), "총 수업의 1/3 지나기 전: 2/3 반환"];
+  if (r < 1 / 2) return [Math.floor(fee / 2), "1/3 지나고 1/2 지나기 전: 1/2 반환"];
+  return [0, "총 수업의 1/2 지난 뒤: 반환 없음"];
+}
+function calc() {
+  const fee = Math.max(0, +$("#c-fee").value || 0);
+  const total = Math.max(1, +$("#c-total").value || 1);
+  const done = Math.min(total, Math.max(0, +$("#c-done").value || 0));
+  const multi = $("#c-months").value !== "1";
+  $("#c-left-wrap").hidden = !multi;
+  const left = multi ? Math.max(0, +$("#c-left").value || 0) : 0;
+  const [cur, why] = refund(fee, total, done);
+  const amt = cur + fee * left;
+  $("#c-amt").textContent = amt.toLocaleString("ko-KR") + "원";
+  $("#c-why").textContent = why + (left ? ` + 남은 ${left}개월분 전액 ${(fee * left).toLocaleString("ko-KR")}원` : "");
+}
+$("#calc").addEventListener("input", calc);
+$("#calc").addEventListener("submit", e => e.preventDefault());
+calc();
+// 사설 모의고사 피드 (매주 갱신, data/mock-feed.json)
+const MOCK = /*MOCK*/{"updated":"2026-11-08","items":[{"id":"00079437800","title":"[VERIX] 베릭스 모의고사 무료 배포 (공/확/미)","author":"","date":"2026-09-07","subject":"기타"},{"id":"00079304806","title":"[무료 배포] 2027 SNUMO 수학 모의고사 2회 - 확통, 미적, 기하","author":"","date":"2026-08-28","subject":"수학"},{"id":"00079071644","title":"감전 모의고사 1회 무료배포(8/9 수정)","author":"","date":"2026-07-29","subject":"기타"},{"id":"00079042922","title":"[무료 배포] 2027학년도 국어 연계 모의고사 - 명명백백 모의고사 02회-03회","author":"","date":"2026-07-26","subject":"국어"},{"id":"00078492477","title":"[무료 배포] 2027학년도 수능 수학영역 대비 녹색지대 모의고사 Vol.1","author":"","date":"2026-05-22","subject":"수학"},{"id":"00078282560","title":"수학 풀모의고사 무료배포","author":"띵최미카를로타","date":"2026-04-28","subject":"수학"},{"id":"00075402315","title":"[무료배포] 우일신 파이널 모의고사 시즌2 3회","author":"Thinkers","date":"2025-11-07","subject":"기타"},{"id":"00075193511","title":"[무료배포] 우일신 파이널 모의고사 시즌2 2회","author":"Thinkers","date":"2025-10-23","subject":"기타"},{"id":"00075025166","title":"2026학년도 대학수학능력시험 대비 [결정] 모의고사 1회 무료배포","author":"다정[多征]","date":"2025-10-11","subject":"기타"},{"id":"00075011935","title":"[무료배포] 우일신 파이널 모의고사 시즌2 1회","author":"Thinkers","date":"2025-10-10","subject":"기타"},{"id":"00074481346","title":"[무료배포] 우일신 파이널 모의고사 시즌1 3회","author":"Thinkers","date":"2025-08-29","subject":"기타"},{"id":"00074415764","title":"[수학 모의고사 배포] 9월 모의고사 대비 문제지(공통)","author":"원 점","date":"2025-08-23","subject":"수학"},{"id":"00074404805","title":"[무료배포] 우일신 파이널 모의고사 시즌1 2회","author":"Thinkers","date":"2025-08-22","subject":"기타"},{"id":"00074312430","title":"[무료배포] 우일신 파이널 모의고사 시즌1 1회","author":"Thinkers","date":"2025-08-15","subject":"기타"},{"id":"00069482049","title":"[무료배포] 2025학년도 이게진대 모의평가 (수능 수학, 공통 + 미적분)","author":"TEAM 이게진대","date":"2024-10-14","subject":"수학"},{"id":"00069355251","title":"[무료 배포] 통합과학 중간고사 대비 모의고사 6~10회","author":"Project_SYNC","date":"2024-10-02","subject":"통합"},{"id":"00069297350","title":"[무료 배포] 통합과학 중간고사 대비 모의고사 3회","author":"Project_SYNC","date":"2024-09-27","subject":"통합"},{"id":"00069282617","title":"[무료 배포] 통합과학 중간고사 대비 모의고사 2회","author":"Project_SYNC","date":"2024-09-25","subject":"통합"},{"id":"00069275678","title":"[무료 배포] 통합과학 중간고사 대비 모의고사 1회","author":"Project_SYNC","date":"2024-09-24","subject":"통합"}]}/*/MOCK*/;
+const mock = { sj: "전체", n: 15 };
+function drawMock() {
+  const sjs = ["전체", ...new Set(MOCK.items.map(i => i.subject))];
+  $("#mock-chips").innerHTML = sjs.map(s => `<button type="button" aria-pressed="${s === mock.sj}">${esc(s)}</button>`).join("");
+  const list = MOCK.items.filter(i => mock.sj === "전체" || i.subject === mock.sj);
+  $("#mock-list").innerHTML = list.slice(0, mock.n).map(i =>
+    `<li><time datetime="${esc(i.date)}">${esc(i.date)}</time><span class="sj">${esc(i.subject)}</span><a href="https://orbi.kr/${esc(i.id)}" target="_blank" rel="noopener">${esc(i.title)}</a><span class="by">${esc(i.author)}</span></li>`).join("");
+  $("#mock-more").hidden = list.length <= mock.n;
+  $("#mock-upd").textContent = `마지막 갱신 ${MOCK.updated}.`;
+}
+$("#mock-chips").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  mock.sj = b.textContent; mock.n = 15; drawMock();
+});
+$("#mock-more").addEventListener("click", () => { mock.n += 30; drawMock(); });
+drawMock();
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>강사 채용 체크리스트</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<style>
+:root { --ink:#1d2433; --muted:#5d6676; --line:#9aa3b2; --soft:#eef1f6; --pen:#1f4fd1; }
+* { box-sizing:border-box; }
+body { margin:0; background:#e9ecf1; color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif; font-size:14px; line-height:1.55; }
+.bar { position:sticky; top:0; background:#fff; border-bottom:1px solid #d5d9e0; padding:10px max(16px, env(safe-area-inset-left,0px));
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.bar a, .bar button { font:inherit; font-size:13px; padding:6px 12px; border-radius:8px; border:1px solid #c7cdd6; background:#fff; color:var(--ink); text-decoration:none; cursor:pointer; }
+.bar button { background:var(--ink); color:#fff; border-color:var(--ink); }
+.bar span { color:var(--muted); font-size:13px; }
+.sheet { background:#fff; width:210mm; max-width:calc(100% - 32px); min-height:297mm; margin:20px auto; padding:16mm 15mm; box-shadow:0 1px 4px rgba(0,0,0,.12); }
+h1 { font-size:22px; margin:0 0 4px; text-align:center; letter-spacing:.02em; }
+.sub { text-align:center; color:var(--muted); font-size:12px; margin:0 0 14px; }
+h2 { font-size:15px; margin:18px 0 6px; }
+table { width:100%; border-collapse:collapse; margin:6px 0; table-layout:fixed; }
+th, td { border:1px solid var(--line); padding:7px 8px; vertical-align:top; word-break:keep-all; overflow-wrap:anywhere; }
+th { background:var(--soft); font-weight:600; text-align:center; }
+td.blank { height:30px; }
+.tall td { height:42px; }
+.note { font-size:12px; color:var(--muted); }
+.sign { margin-top:22px; display:grid; gap:10px; justify-items:end; }
+.check li { list-style:none; margin:4px 0; }
+.check li::before { content:"□ "; }
+ul.check { padding-left:4px; }
+.wrapx { overflow-x:auto; }
+@media print {
+  body { background:#fff; }
+  .bar { display:none; }
+  .sheet { box-shadow:none; margin:0; width:auto; max-width:none; min-height:0; padding:0; }
+  @page { size:A4; margin:14mm; }
+}
+</style></head>
+<body>
+<div class="bar"><a href="../index.html">← 무료아카데미월드</a><button type="button" onclick="window.print()">인쇄 / PDF로 저장</button>
+<span>칸을 눌러 바로 입력한 뒤 인쇄할 수 있습니다. 학원명 등은 직접 고쳐 쓰세요.</span></div>
+<div class="sheet" contenteditable="true" spellcheck="false">
+
+<h1>강사 채용 체크리스트</h1>
+<p class="sub">빠뜨리면 과태료가 나오는 항목 위주로 정리했습니다.</p>
+<table><tr><th style="width:18%">강사 이름</th><td></td><th style="width:18%">채용 예정일</th><td></td></tr></table>
+<h2>채용 전</h2>
+<ul class="check">
+<li>자격 확인: 전문대 졸업 이상 또는 4년제 대학 2년 이상 수료 (재학·휴학증명서 불가)</li>
+<li>최종학력증명서 받기 (졸업장 말고 증명서, 발급 3개월 이내)</li>
+<li>성범죄경력 및 아동학대 범죄전력 조회 회신서 받기 (경찰청 범죄경력회보서 발급시스템 crims.police.go.kr 또는 관할 경찰서, 무료)</li>
+<li>채용일은 범죄경력 조회일 이후로 잡기 (조회일 이전 날짜로 채용 불가)</li>
+</ul>
+<p class="note">성범죄경력 미조회 1차 과태료 300만원, 아동학대 범죄전력 미조회 1차 250만원.</p>
+<h2>채용할 때</h2>
+<ul class="check">
+<li>근로계약서 작성·교부 (고용노동부 표준근로계약서) 또는 프리랜서(사업소득 3.3%) 계약서 작성</li>
+<li>근로자라면 4대보험 취득 신고 (입사일 다음 달 15일까지), 두루누리 지원 대상인지 확인</li>
+<li>프리랜서라면 매월 원천징수(3.3%) 신고·납부 일정 등록</li>
+</ul>
+<h2>채용 후 15일 이내</h2>
+<ul class="check">
+<li>교육지원청에 강사 채용 등록 (나이스 학원민원서비스 hakwon.neis.go.kr 온라인 가능)</li>
+<li>강사 게시표에 이름·과목·학력 추가</li>
+<li>올해 아동학대 신고의무자 교육(1시간 이상, 무료 온라인) 이수 안내</li>
+</ul>
+<h2>퇴사할 때</h2>
+<ul class="check">
+<li>해임일부터 15일 이내 교육지원청에 해임 통보</li>
+<li>4대보험 상실 신고, 퇴직금(1년 이상 근무, 주 15시간 이상) 14일 이내 지급</li>
+<li>강사 게시표에서 삭제</li>
+</ul>
+
+<p class="note">근거: 학원법 시행령 제12조 [별표 3], 아동·청소년의 성보호에 관한 법률 제56조, 아동복지법 제29조의3, 근로기준법 제17조</p>
+<p class="note">무료아카데미월드 제공 양식 · 자유롭게 고쳐 쓰고 인쇄해 사용하세요. 법령은 바뀔 수 있으니 관할 교육지원청 안내를 함께 확인하세요.</p>
+</div>
+</body></html>

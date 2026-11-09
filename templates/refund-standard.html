@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>교습비등 반환기준 게시표</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<style>
+:root { --ink:#1d2433; --muted:#5d6676; --line:#9aa3b2; --soft:#eef1f6; --pen:#1f4fd1; }
+* { box-sizing:border-box; }
+body { margin:0; background:#e9ecf1; color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif; font-size:14px; line-height:1.55; }
+.bar { position:sticky; top:0; background:#fff; border-bottom:1px solid #d5d9e0; padding:10px max(16px, env(safe-area-inset-left,0px));
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.bar a, .bar button { font:inherit; font-size:13px; padding:6px 12px; border-radius:8px; border:1px solid #c7cdd6; background:#fff; color:var(--ink); text-decoration:none; cursor:pointer; }
+.bar button { background:var(--ink); color:#fff; border-color:var(--ink); }
+.bar span { color:var(--muted); font-size:13px; }
+.sheet { background:#fff; width:210mm; max-width:calc(100% - 32px); min-height:297mm; margin:20px auto; padding:16mm 15mm; box-shadow:0 1px 4px rgba(0,0,0,.12); }
+h1 { font-size:22px; margin:0 0 4px; text-align:center; letter-spacing:.02em; }
+.sub { text-align:center; color:var(--muted); font-size:12px; margin:0 0 14px; }
+h2 { font-size:15px; margin:18px 0 6px; }
+table { width:100%; border-collapse:collapse; margin:6px 0; table-layout:fixed; }
+th, td { border:1px solid var(--line); padding:7px 8px; vertical-align:top; word-break:keep-all; overflow-wrap:anywhere; }
+th { background:var(--soft); font-weight:600; text-align:center; }
+td.blank { height:30px; }
+.tall td { height:42px; }
+.note { font-size:12px; color:var(--muted); }
+.sign { margin-top:22px; display:grid; gap:10px; justify-items:end; }
+.check li { list-style:none; margin:4px 0; }
+.check li::before { content:"□ "; }
+ul.check { padding-left:4px; }
+.wrapx { overflow-x:auto; }
+@media print {
+  body { background:#fff; }
+  .bar { display:none; }
+  .sheet { box-shadow:none; margin:0; width:auto; max-width:none; min-height:0; padding:0; }
+  @page { size:A4; margin:14mm; }
+}
+</style></head>
+<body>
+<div class="bar"><a href="../index.html">← 무료아카데미월드</a><button type="button" onclick="window.print()">인쇄 / PDF로 저장</button>
+<span>칸을 눌러 바로 입력한 뒤 인쇄할 수 있습니다. 학원명 등은 직접 고쳐 쓰세요.</span></div>
+<div class="sheet" contenteditable="true" spellcheck="false">
+
+<h1>교습비등 반환기준</h1>
+<p class="sub">「학원의 설립·운영 및 과외교습에 관한 법률 시행령」 제18조 및 [별표 4] · 학습자가 잘 보이는 곳에 게시</p>
+<table>
+<tr><th style="width:26%">반환사유</th><th style="width:22%">반환사유 발생일</th><th colspan="2">반환금액</th></tr>
+<tr><td>학습자가 학원으로부터 격리된 경우 (감염병 등)</td><td>격리된 날</td>
+<td colspan="2">이미 납부한 교습비등 − (일할 계산한 금액 × 교습 시작일부터 격리된 날 전날까지의 일수)</td></tr>
+<tr><td>학원의 등록 말소, 교습정지, 학원이 교습을 할 수 없게 된 경우</td><td>교습을 할 수 없게 된 날</td>
+<td colspan="2">이미 납부한 교습비등 − (일할 계산한 금액 × 교습 시작일부터 교습을 할 수 없게 된 날 전날까지의 일수)</td></tr>
+<tr><td rowspan="4">학습자 본인의 의사로 수강을 포기한 경우<br><b>교습기간 1개월 이내</b></td><td rowspan="4">수강을 포기한 날</td>
+<td style="width:30%">교습 시작 전</td><td>이미 납부한 교습비등 <b>전액</b></td></tr>
+<tr><td>총 교습시간의 1/3 경과 전</td><td>이미 납부한 교습비등의 <b>2/3</b></td></tr>
+<tr><td>총 교습시간의 1/3 경과 후 ~ 1/2 경과 전</td><td>이미 납부한 교습비등의 <b>1/2</b></td></tr>
+<tr><td>총 교습시간의 1/2 경과 후</td><td>반환하지 않음</td></tr>
+<tr><td rowspan="2">학습자 본인의 의사로 수강을 포기한 경우<br><b>교습기간 1개월 초과</b></td><td rowspan="2">수강을 포기한 날</td>
+<td>교습 시작 전</td><td>이미 납부한 교습비등 <b>전액</b></td></tr>
+<tr><td>교습 시작 후</td><td>반환사유가 생긴 달의 반환액(1개월 이내 기준으로 계산) + 나머지 달의 교습비등 <b>전액</b></td></tr>
+</table>
+<ul class="note">
+<li>총 교습시간은 교습기간 중의 총 교습시간이며, 반환금액은 반환사유가 생긴 날까지 지난 교습시간을 기준으로 계산합니다.</li>
+<li>원격교습은 실제 수강한 부분(인터넷 수강·학습기기 저장분)에 해당하는 금액을 뺀 금액을 반환합니다.</li>
+<li>반환사유가 생긴 날부터 <b>5일 이내</b>에 반환해야 합니다. 반환하지 않으면 300만원 이하 과태료 대상입니다.</li>
+</ul>
+<div class="sign"><div>학원명: ______________________ &nbsp; 설립·운영자: ____________ (인)</div></div>
+
+<p class="note">근거: 학원법 시행령 제18조, [별표 4] 교습비등 반환기준 (국가법령정보센터 law.go.kr)</p>
+<p class="note">무료아카데미월드 제공 양식 · 자유롭게 고쳐 쓰고 인쇄해 사용하세요. 법령은 바뀔 수 있으니 관할 교육지원청 안내를 함께 확인하세요.</p>
+</div>
+</body></html>

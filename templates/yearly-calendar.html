@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>원장 연간 행정·세무 일정</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<style>
+:root { --ink:#1d2433; --muted:#5d6676; --line:#9aa3b2; --soft:#eef1f6; --pen:#1f4fd1; }
+* { box-sizing:border-box; }
+body { margin:0; background:#e9ecf1; color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif; font-size:14px; line-height:1.55; }
+.bar { position:sticky; top:0; background:#fff; border-bottom:1px solid #d5d9e0; padding:10px max(16px, env(safe-area-inset-left,0px));
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.bar a, .bar button { font:inherit; font-size:13px; padding:6px 12px; border-radius:8px; border:1px solid #c7cdd6; background:#fff; color:var(--ink); text-decoration:none; cursor:pointer; }
+.bar button { background:var(--ink); color:#fff; border-color:var(--ink); }
+.bar span { color:var(--muted); font-size:13px; }
+.sheet { background:#fff; width:210mm; max-width:calc(100% - 32px); min-height:297mm; margin:20px auto; padding:16mm 15mm; box-shadow:0 1px 4px rgba(0,0,0,.12); }
+h1 { font-size:22px; margin:0 0 4px; text-align:center; letter-spacing:.02em; }
+.sub { text-align:center; color:var(--muted); font-size:12px; margin:0 0 14px; }
+h2 { font-size:15px; margin:18px 0 6px; }
+table { width:100%; border-collapse:collapse; margin:6px 0; table-layout:fixed; }
+th, td { border:1px solid var(--line); padding:7px 8px; vertical-align:top; word-break:keep-all; overflow-wrap:anywhere; }
+th { background:var(--soft); font-weight:600; text-align:center; }
+td.blank { height:30px; }
+.tall td { height:42px; }
+.note { font-size:12px; color:var(--muted); }
+.sign { margin-top:22px; display:grid; gap:10px; justify-items:end; }
+.check li { list-style:none; margin:4px 0; }
+.check li::before { content:"□ "; }
+ul.check { padding-left:4px; }
+.wrapx { overflow-x:auto; }
+@media print {
+  body { background:#fff; }
+  .bar { display:none; }
+  .sheet { box-shadow:none; margin:0; width:auto; max-width:none; min-height:0; padding:0; }
+  @page { size:A4; margin:14mm; }
+}
+</style></head>
+<body>
+<div class="bar"><a href="../index.html">← 무료아카데미월드</a><button type="button" onclick="window.print()">인쇄 / PDF로 저장</button>
+<span>칸을 눌러 바로 입력한 뒤 인쇄할 수 있습니다. 학원명 등은 직접 고쳐 쓰세요.</span></div>
+<div class="sheet" contenteditable="true" spellcheck="false">
+
+<h1>원장 연간 행정·세무 일정</h1>
+<p class="sub">개인사업자 학원(부가가치세 면세) 기준 · 기한이 주말·공휴일이면 다음 날까지</p>
+<div class="wrapx"><table>
+<tr><th style="width:16%">시기</th><th style="width:34%">할 일</th><th>메모</th></tr>
+<tr><td>매월 10일</td><td>원천세 신고·납부 (강사 급여·3.3% 사업소득)</td><td>홈택스. 반기 납부 승인 사업장은 1월·7월</td></tr>
+<tr><td>매월 10일</td><td>4대보험료 납부</td><td>두루누리 지원은 기한 내 완납해야 다음 달 차감</td></tr>
+<tr><td>매월 말일</td><td>사업소득 간이지급명세서 제출 (프리랜서 강사)</td><td>홈택스</td></tr>
+<tr><td>1월 16일~31일</td><td>등록면허세(면허분) 정기분 납부</td><td>위택스. 납부 내역은 나이스 학원민원서비스에 등록</td></tr>
+<tr><td>2월 10일</td><td>면세사업자 사업장현황신고</td><td>전년도 수입금액 신고. 홈택스 신고도움 서비스 이용</td></tr>
+<tr><td>3월 10일</td><td>근로소득 연말정산, 지급명세서 제출</td><td>근로자 강사·직원이 있는 경우</td></tr>
+<tr><td>5월 31일</td><td>종합소득세 신고·납부</td><td>성실신고확인 대상은 6월 30일</td></tr>
+<tr><td>11월 30일</td><td>종합소득세 중간예납</td><td>국세청 고지서 확인</td></tr>
+<tr><td>12월 31일까지</td><td>아동학대 신고의무자 교육 (매년 1시간 이상)</td><td>원장·강사·직원 모두. 미실시 시 과태료</td></tr>
+<tr><td>연중 수시</td><td>강사 채용·해임 15일 이내 신고</td><td>나이스 학원민원서비스</td></tr>
+<tr><td>연중 수시</td><td>교습비 변경 시 교육지원청에 먼저 변경 등록</td><td>방학 특강도 교습과정·교습비 등록 필요</td></tr>
+<tr><td>연중 수시</td><td>현금 10만원 이상 받으면 현금영수증 발급</td><td>학원은 의무발행업종. 미발급 시 20% 가산세</td></tr>
+<tr><td>보험 만기 전</td><td>학원 배상책임보험 갱신, 교육청에 가입 내역 등록</td><td>미가입 시 행정처분</td></tr>
+</table></div>
+<h2>우리 학원 메모</h2>
+<table><tr><td style="height:90px"></td></tr></table>
+
+<p class="note">근거: 국세청 신고 안내, 학원법, 아동복지법 제26조. 세부 기한은 해마다 국세청·교육청 공지로 확인</p>
+<p class="note">무료아카데미월드 제공 양식 · 자유롭게 고쳐 쓰고 인쇄해 사용하세요. 법령은 바뀔 수 있으니 관할 교육지원청 안내를 함께 확인하세요.</p>
+</div>
+</body></html>
